@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "FjallaOne";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/FjallaOne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "FiraSans-MediumItalic";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/FiraSans-MediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato-BoldItalic";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/Lato-BoldItalic.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "ABeeZee-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/ABeeZee-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Amaranth-Italic";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/Amaranth-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AverageSans-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/AverageSans-Regular.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "OptimaLTStd-Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("../fonts/OptimaLTStd-Bold.woff") format("woff"), url("../font/OptimaLTStd-Bold.ttf") format("truetype"), url("../font/OptimaLTStd-Bold.eot") format("eot");
+}
