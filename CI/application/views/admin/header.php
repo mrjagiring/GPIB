@@ -111,8 +111,8 @@
             <li class="treeview">
               <a href="#"><i class='fa fa-edit'></i> <span>Post</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class='fa fa-plus'></i>Tambah Post</a></li>
-                <li><a href="#"><i class='fa fa-gears'></i>Manage Posts</a></li>
+                <li><a href="<?php echo base_url(); ?>berita/form/0"><i class='fa fa-plus'></i>Tambah Post</a></li>
+                <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-gears'></i>Manage Posts</a></li>
               </ul>
             </li>
             <li class="header">PANEL JEMAAT</li>

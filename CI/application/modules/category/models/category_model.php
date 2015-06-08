@@ -34,9 +34,10 @@ Class Category_model extends CI_Model
 		$this->db->update('tbl_category', $data); 
 	}
 
-	function viewCat($id)
+	function rootCat()
 	{
-		
+		$sql = $this->db->query("SELECT * from tbl_category where parent_id=0");
+		return $sql;
 	}
 	
 	function manualQuery($datainput)
