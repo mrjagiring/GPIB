@@ -17,6 +17,8 @@
     
     <link href="<?php echo base_url() ;?>public/css/main.css" rel="stylesheet">
     <link href="<?php echo base_url() ;?>public/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script src="<?php echo base_url() ;?>public/js/ckeditor/ckeditor.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
