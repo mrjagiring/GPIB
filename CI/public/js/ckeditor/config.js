@@ -4,12 +4,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 CKEDITOR.editorConfig = function( config )
 {
-config.filebrowserBrowseUrl = '../kcfinder/browse.php?type=files';
-config.filebrowserImageBrowseUrl = '../kcfinder/browse.php?type=images';
-config.filebrowserFlashBrowseUrl = '../kcfinder/browse.php?type=flash';
-config.filebrowserUploadUrl = '../kcfinder/upload.php?type=files';
-config.filebrowserImageUploadUrl = '../kcfinder/upload.php?type=images';
-config.filebrowserFlashUploadUrl = '../kcfinder/upload.php?type=flash';
+config.filebrowserBrowseUrl = '../public/js/kcfinder/browse.php?type=files';
+config.filebrowserImageBrowseUrl = '../public/js/kcfinder/browse.php?type=images';
+config.filebrowserFlashBrowseUrl = '../public/js/kcfinder/browse.php?type=flash';
+config.filebrowserUploadUrl = '../public/js/kcfinder/upload.php?type=files';
+config.filebrowserImageUploadUrl = '../public/js/kcfinder/upload.php?type=images';
+config.filebrowserFlashUploadUrl = '../public/js/kcfinder/upload.php?type=flash';
 // Define changes to default configuration here. For example:
 // config.language = 'fr';
 // config.uiColor = '#AADC6E';
