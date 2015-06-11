@@ -5,8 +5,8 @@ class Category extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library(array('form_validation','session'));
-		$this->load->helper(array('form','html','url'));
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('html'));
 		$this->load->database();
 		$this->load->model('category_model');
 	}

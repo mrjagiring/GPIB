@@ -28,18 +28,18 @@
                       </tr>
                     </thead>
                     <tbody>
-					<?php $i=1;
-					foreach($allCategory->result_array() as $data) { ?>
+					<?php foreach($allCategory->result_array() as $data) { ?>
+          <?php $cat = $this->category_model->getCat($data['parent_id']); ?>
 						<tr>
 							<td><?php echo $data['title']; ?> </td>
 							<td><?php echo $data['desk']; ?> </td>
-							<td><?php echo $data['parent_id']; ?> </td>
+							<td><?php echo @$cat['title']; ?> </td>
 							<td class="text-right">
 								<a href="<?php echo base_url().'category/form/'.$data['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
 								<a href="<?php echo base_url().'category/deleting/'.$data['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
 							</td>
 						</tr>
-					<?php $i++; }  ?>
+					<?php }  ?>
                     </tbody>
                   </table>
                 </div><!-- /.box-body -->

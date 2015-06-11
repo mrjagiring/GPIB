@@ -5,8 +5,8 @@ class Berita extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library(array('form_validation','session'));
-		$this->load->helper(array('form','html','url'));
+		$this->load->library(array('form_validation'));
+		$this->load->helper(array('html'));
 		$this->load->database();
 		$this->load->model('berita_model');
 		$this->load->model('category/category_model');
@@ -48,17 +48,13 @@ class Berita extends CI_Controller {
 
 	public function deleting($id)
 	{
-		$username = $this->session->userdata('username');
-		$isAdmin = $this->session->userdata('loginadmin');
-		if($username != "" && $isAdmin === TRUE){
-			$data = $this->category_model->getCat($id);
-			if ($data['image'] != '') { unlink('./assets/uploads/category/'.$data['image']); }
-			$result = $this->category_model->deleteCat($id);
-			redirect('category/listing');
+		$isLogin = $this->session->userdata('logged_in');
+		if($isLogin === TRUE){
+			$result = $this->berita_model->deleteBerita($id);
+			redirect('berita/listing');
 		}
 		else{
-			$data["judul"] = "Ananaka Admin Dashboard | Login";
-			redirect('panel/login');
+			redirect('secure/login');
 		}		
 	}
 
@@ -90,18 +86,13 @@ class Berita extends CI_Controller {
 
 	public function listing()
 	{
-		$data['cssPage'] ='
-			<link rel="stylesheet" href="'.base_url().'assets/admin/plugins/datatables/dataTables.bootstrap.css" />';
+		$data['cssPage'] ='<link rel="stylesheet" href="'.base_url().'assets/admin/plugins/datatables/dataTables.bootstrap.css" />';
 	
-		$data['jsPage'] = '
-			<script src="'.base_url().'assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-			<script src="'.base_url().'assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
-			<script type="text/javascript">
-		      $(function () {
-		        $("#listPost").dataTable({"bLengthChange": false,"bFilter": false,"bSort": false});
-		      });
-		    </script>
-		';
+		$data['jsPage'] = '<script src="'.base_url().'assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+		<script src="'.base_url().'assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function () {$("#listPost").dataTable({"bLengthChange": false,"bFilter": false,"bSort": false});});
+		</script>';
 
 		$isLogin = $this->session->userdata('logged_in');
 		if ($isLogin === TRUE) {
@@ -118,42 +109,23 @@ class Berita extends CI_Controller {
 
 	public function updating()
 	{
-		$data['name'] = mysql_real_escape_string($this->input->post("name"));
-		$data['description'] = mysql_real_escape_string($this->input->post("description"));
-		$data['isActive'] = $this->input->post("isActive");
+		$data['cat_id'] = $this->input->post("cat_id");
+		$data['title'] = mysql_real_escape_string($this->input->post("title"));
+		$data['slug'] = mysql_real_escape_string(url_title($data['title'], 'dash', true));
+		$data['desk'] = mysql_real_escape_string($this->input->post("editor1"));
+		$data['file'] = mysql_real_escape_string($this->input->post("file"));
+		$data['update_by'] = $this->session->userdata('user_id');
 		$id = $this->input->post("id");
 		//print_r($data);
 
-		$username = $this->session->userdata('username');
-		$isAdmin = $this->session->userdata('loginadmin');
-		if($username != "" && $isAdmin === TRUE){
-			if ($this->input->post('btn_login') == "Save changes")
-			{
-				$dataCategory = $this->category_model->getCat($id);
-
-				if ($_FILES['image']['tmp_name'] != "") 
-				{
-					$data['image'] = $this->uploading();
-					if ($dataCategory['image'] != '')
-					{
-						unlink('./assets/uploads/category/'.$dataCategory['image']);
-						unlink('./assets/uploads/category/thumbs/'.$dataCategory['image']);
-					}
-
-					$result = $this->category_model->updateCat($id, $data);
-					redirect('category/listing');
-				} else {
-					$data['image'] = $dataCategory['image'];
-					
-					$result = $this->category_model->updateCat($id, $data);
-					redirect('category/listing');
-				}
-			}
+		$isLogin = $this->session->userdata('logged_in');
+		if ($isLogin === TRUE) {
+			$result = $this->berita_model->updateBerita($id, $data);
+			redirect('berita/listing');
 		}
-		else{
-			$data["judul"] = "Ananaka Admin Dashboard | Login";
-			redirect('panel/login');
-		}
-		
+		else
+		{
+			redirect('secure/login');
+		}		
 	}
 }

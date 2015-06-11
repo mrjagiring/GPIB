@@ -4,9 +4,8 @@ class Secure extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->library(array('session'));
-		$this->load->helper(array('url'));
 		$this->load->model('secure_model');
+		$this->load->model('berita/berita_model');
 	}
 	
 	public function index() {
@@ -16,9 +15,9 @@ class Secure extends CI_Controller {
 	public function register() {
 		// create the data object
 		$data = new stdClass();
+		$data->cssPage ='';	
+		$data->jsPage = '';
 		
-		// load form helper and validation library
-		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
 		// set validation rules
@@ -29,28 +28,30 @@ class Secure extends CI_Controller {
 		
 		if ($this->form_validation->run() === false) {
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
-			$this->load->view('user/register/register', $data);
-			$this->load->view('footer');
+			$this->load->view('admin/header',$data);
+			$this->load->view('register',$data);
+			$this->load->view('admin/footer',$data);
 		} else {
 			// set variables from the form
-			$username = $this->input->post('username');
-			$email    = $this->input->post('email');
-			$password = $this->input->post('password');
+			$user = array(
+				'fullname'   => $this->input->post('fullname'),
+				'username'   => $this->input->post('username'),
+				'email'      => $this->input->post('email'),
+				'password'   => $this->input->post('password'),
+				'created_at' => date('Y-m-j H:i:s'),
+			);
 			
-			if ($this->secure_model->create_user($username, $email, $password)) {
+			if ($this->secure_model->create_user($user)) {
 				// user creation ok
-				$this->load->view('header');
-				$this->load->view('user/register/register_success', $data);
-				$this->load->view('footer');
+				redirect('secure/users');
 			} else {
 				// user creation failed, this should never happen
 				$data->error = 'There was a problem creating your new account. Please try again.';
 				
 				// send error to the view
-				$this->load->view('header');
-				$this->load->view('user/register/register', $data);
-				$this->load->view('footer');
+				$this->load->view('admin/header',$data);
+				$this->load->view('register',$data);
+				$this->load->view('admin/footer',$data);
 			}
 		}
 	}
@@ -60,7 +61,6 @@ class Secure extends CI_Controller {
 		$data = new stdClass();
 		
 		// load form helper and validation library
-		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
 		// set validation rules
@@ -69,7 +69,7 @@ class Secure extends CI_Controller {
 		
 		if ($this->form_validation->run() == false) {
 			// validation not ok, send validation errors to the view
-			$this->load->view('login_view');
+			$this->load->view('login');
 		} else {
 			// set variables from the form
 			$username = $this->input->post('username');
@@ -78,31 +78,26 @@ class Secure extends CI_Controller {
 			if ($this->secure_model->resolve_user_login($username, $password)) {
 				$user_id = $this->secure_model->get_user_id_from_username($username);
 				$user    = $this->secure_model->get_user($user_id);
-				
-				// set session user datas
-				$_SESSION['user_id']      = (int)$user->id;
-				$_SESSION['username']     = (string)$user->username;
-				$_SESSION['logged_in']    = (bool)true;
-				$_SESSION['is_confirmed'] = (bool)$user->is_confirmed;
-				$_SESSION['is_admin']     = (bool)$user->is_admin;
 
 				//set the session variables
 				$sessiondata = array(
 					'user_id' => (int)$user->id,
 					'username' => (string)$user->username,
+					'fullname' => (string)$user->fullname,
 					'logged_in' => (bool)true,
+					'is_confirmed' => (bool)$user->is_confirmed,
 					'is_admin' => (bool)$user->is_admin
 				);
 				$this->session->set_userdata($sessiondata);
 				
 				// user login ok
-				redirect('secure/dashboard/');
+				redirect('secure/dashboard');
 			} else {
 				// login failed
 				$data->error = 'Wrong username or password.';
 				
 				// send error to the view
-				$this->load->view('login_view', $data);
+				$this->load->view('login', $data);
 			}
 		}
 	}
@@ -111,26 +106,12 @@ class Secure extends CI_Controller {
 		
 		// create the data object
 		$data = new stdClass();
-		
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-			
-			// remove session datas
-			foreach ($_SESSION as $key => $value) {
-				unset($_SESSION[$key]);
-			}
+
+		$isLogin = $this->session->userdata('logged_in');
+		if ($isLogin === TRUE) {
 			$this->session->sess_destroy();
-			
-			// user logout ok
-			redirect('secure/login/');
-			
-		} else {
-			
-			// there user was not logged in, we cannot logged him out,
-			// redirect him to site root
-			redirect('/');
-			
+			redirect('secure/login');
 		}
-		
 	}
 	
 	public function forgot() {
@@ -143,12 +124,13 @@ class Secure extends CI_Controller {
 	
 		$data['jsPage'] = '';
 
-		if ($_SESSION['logged_in']){
+		$isLogin = $this->session->userdata('logged_in');
+		if ($isLogin === TRUE) {
 			$this->load->view('admin/header', $data);
 			$this->load->view('dashboard');
 			$this->load->view('admin/footer', $data);
 		}else{
-			redirect('secure/login/');
+			redirect('secure/login');
 		}
 	}
 }

@@ -24,26 +24,28 @@
                         <th>Judul Berita</th>
                         <th>Kategori Berita</th>
                         <th>Author</th>
-                        <th>Diupdate</th>
+                        <th>Diupdate Oleh</th>
                         <th>Last Update</th>
                         <th class="text-center">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-					<?php $i=1;
-					foreach($allPost->result_array() as $data) { ?>
-						<tr>
-							<td><?php echo $data['title']; ?> </td>
-							<td><?php echo $data['cat_id']; ?> </td>
-              <td><?php echo $data['author']; ?> </td>
-              <td><?php echo $data['update_by']; ?> </td>
-              <td><?php echo $data['update_at']; ?> </td>
-							<td class="text-right">
-								<a href="<?php echo base_url().'berita/form/'.$data['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-								<a href="<?php echo base_url().'berita/deleting/'.$data['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-							</td>
-						</tr>
-					<?php $i++; }  ?>
+          					<?php foreach($allPost as $data) { ?>
+                    <?php $cat = $this->category_model->getCat($data->cat_id); ?>
+                    <?php $author = $this->secure_model->get_user($data->author); ?>
+                    <?php $upd = $this->secure_model->get_user($data->update_by); ?>
+          						<tr>
+          							<td><?php echo $data->title; ?> </td>
+          							<td><?php echo $cat['title']; ?> </td>
+                        <td><?php echo $author->username; ?> </td>
+                        <td><?php echo @$upd->username; ?> </td>
+                        <td><?php echo $data->update_at; ?> </td>
+          							<td class="text-right">
+          								<a href="<?php echo base_url().'berita/form/'.$data->id; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+          								<a href="<?php echo base_url().'berita/deleting/'.$data->id; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+          							</td>
+          						</tr>
+          					<?php }  ?>
                     </tbody>
                   </table>
                 </div><!-- /.box-body -->

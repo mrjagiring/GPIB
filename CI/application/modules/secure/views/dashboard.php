@@ -18,7 +18,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="glyphicon glyphicon-th-list"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Kategori</span>
+                  <span class="info-box-text">Kategori Berita</span>
                   <span class="info-box-number">20</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -28,7 +28,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="glyphicon glyphicon-book"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">Post</span>
+                  <span class="info-box-text">Post Berita</span>
                   <span class="info-box-number">760</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -42,6 +42,16 @@
                 <span class="info-box-icon bg-yellow"><i class="glyphicon glyphicon-user"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Jemaat</span>
+                  <span class="info-box-number">218</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Kehadiran Jemaat</span>
                   <span class="info-box-number">218</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -115,33 +125,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>iPhone 6 Plus</td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>Samsung Smart TV</td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                        </tr>
+                        <?php $allPost = $this->berita_model->listBerita(10,0); ?>
+                        <?php foreach($allPost as $data) { ?>
+                        <?php $author = $this->secure_model->get_user($data->author); ?>
+                          <tr>
+                            <td><?php echo $author->username; ?> </td>
+                            <td><?php echo $data->title; ?> </td>
+                          </tr>
+                        <?php }  ?>
                       </tbody>
                     </table>
                   </div><!-- /.table-responsive -->
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                  <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Tambah Berita</a>
-                  <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Lihat Semua Post</a>
+                  <a href="<?php echo base_url(); ?>berita/form/0" class="btn btn-sm btn-info btn-flat pull-left">Tambah Berita</a>
+                  <a href="<?php echo base_url(); ?>berita/listing" class="btn btn-sm btn-default btn-flat pull-right">Lihat Semua Post</a>
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
             </div><!-- /.col -->

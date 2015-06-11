@@ -22,10 +22,22 @@ Class Berita_model extends CI_Model
 		$this->db->delete("tbl_berita");
 	}
 	
-	function listBerita()
+	function listBerita($limit = false, $offset = false)
 	{
-		$sql = $this->db->query("SELECT * from tbl_berita");
-		return $sql;
+		if ($limit)
+		{
+			$this->db->order_by('id', 'DESC');
+			$result	= $this->db->get('tbl_berita',$limit,$offset);
+			
+			return $result->result();
+		}
+		else
+		{
+			$this->db->order_by('id', 'DESC');
+			$result	= $this->db->get('tbl_berita');
+
+			return $result->result();
+		}
 	}
 
 	function updateBerita($id, $data)
@@ -54,4 +66,25 @@ Class Berita_model extends CI_Model
 		$row = $query->row_array();
 		return $row;
 	}
+
+	function getAllBerita($category_id = false, $limit = false, $offset = false, $by=false, $sort=false)
+	{
+		//if we are provided a category_id, then get post according to category
+		if ($category_id)
+		{
+			$this->db->get_where('tbl_berita', array('cat_id' => $category_id));
+			$this->db->order_by($by, $sort);			
+			$result	= $this->db->limit($limit)->offset($offset)->get()->result();
+			
+			return $result;
+		}
+		else
+		{
+			$this->db->order_by('id', 'DESC');
+			$result	= $this->db->get('tbl_berita');
+
+			return $result->result();
+		}
+	}
+
 }
