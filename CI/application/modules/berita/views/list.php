@@ -15,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">List Post Berita</h3>
+                  <a class="btn btn-success" href="<?php echo base_url(); ?>berita/form/0"><i class="fa fa-plus"></i> Tambah Berita</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="listPost" class="table table-bordered table-hover">

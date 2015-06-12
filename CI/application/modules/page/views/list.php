@@ -15,7 +15,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">List Data Menu</h3>
+                  <a class="btn btn-success" href="<?php echo base_url(); ?>page/form/0"><i class="fa fa-plus"></i> Tambah Data Menu</a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="listMenu" class="table table-bordered table-hover">

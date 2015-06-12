@@ -85,27 +85,11 @@
           <ul class="sidebar-menu">
             <li><a href="<?php echo base_url(); ?>secure/dashboard"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
             <li class="header">PANEL MENU</li>
-            <li class="treeview">
-              <a href="#"><i class='fa fa-book'></i> <span>Pages</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>page/form/0"><i class='fa fa-plus'></i>Tambah Pages</a></li>
-                <li><a href="<?php echo base_url(); ?>page/listing"><i class='fa fa-gears'></i>Manage Pages</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#"><i class='fa fa-list'></i> <span>Kategori</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>category/form/0"><i class='fa fa-plus'></i>Tambah Kategori</a></li>
-                <li><a href="<?php echo base_url(); ?>category/listing"><i class='fa fa-gears'></i>Manage Kategori</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#"><i class='fa fa-edit'></i> <span>Post</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo base_url(); ?>berita/form/0"><i class='fa fa-plus'></i>Tambah Post</a></li>
-                <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-gears'></i>Manage Posts</a></li>
-              </ul>
-            </li>
+            <li><a href="<?php echo base_url(); ?>page/listing"><i class='fa fa-sitemap'></i> <span>Menu Pages</span></a></li>
+            <li><a href="<?php echo base_url(); ?>category/listing"><i class='fa fa-list'></i> <span>Kategori Berita</span></a></li>
+            <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-edit'></i> <span>Post Berita</span></a></li>
+            <li><a href="<?php echo base_url(); ?>galery"><i class='fa fa-users'></i> <span>Galery Foto</span></a></li>
+            <li><a href="<?php echo base_url(); ?>#"><i class='fa fa-users'></i> <span>File Management</span></a></li>
             <li class="header">PANEL JEMAAT</li>
             <li class="treeview">
               <a href="#"><i class='fa fa-user'></i> <span>Jemaat GPIB</span> <i class="fa fa-angle-left pull-right"></i></a>
