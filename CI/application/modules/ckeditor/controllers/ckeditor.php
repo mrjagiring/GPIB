@@ -10,8 +10,12 @@ class CKEditor extends CI_Controller
  
     public function index()
     {
-                
-        $this->template->display('ckeditor-form');
+        $data['cssPage'] ='';
+        $data['jsPage'] ='';
+        
+        $this->load->view('admin/header', $data);        
+        $this->load->view('ckeditor-form');
+        $this->load->view('admin/footer', $data);
     }
  
     

@@ -90,7 +90,7 @@
                                     <tr>
                                         <td></td>
                                         <td><img src="<?php echo base_url() ;?>uploads/gallery/<?php echo $path.'/'.$image;?>" class="img-thumbnail" width="180px"/></td>
-                                        <td></td>
+                                        <td><?php echo anchor('gallery/remove_files/'.$path.'/'.$image, '<i class="glyphicon glyphicon-trash"></i>') ;?></td>
                                     </tr>
                                     <?php endforeach ;?>
                                 </tbody>

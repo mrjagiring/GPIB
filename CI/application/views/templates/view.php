@@ -22,10 +22,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 
 <body>
-
+    
       <div class="container">
                 
                 <div id="header">
@@ -63,28 +64,36 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators hidden">
                           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                          
+                          
+                          <?php $i=1;?>
+                          <?php foreach($slider AS $rwslide) :?>
+                          <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i++ ;?>"></li>
+                          <?php endforeach ?>
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner custom-carousel" role="listbox">
                           <div class="item active">
-                            <img src="<?php echo base_url() ;?>assets/uploads/sliders/603074_10200797453925873_1917385995_n_wide.jpg" alt="slider 1" class="img-responsive">
+                            <img src="<?php echo base_url() ;?>uploads/gallery/<?php echo $slider->slider_path.'/'.$slider->slider_img ;?>" alt="slider <?php echo $slider->slider_id ;?>" class="img-responsive">
                             <div class="carousel-caption">
-                                <h3>Hadapi Semua Dengan Senyuman</h3>
-                                <p>lorem ipsum dolor amet</p>
+                                <h3><?php echo $slider->slider_title ;?></h3>
+                                <p><?php echo $slider->slider_caption ;?></p>
                             </div>
                           </div>
+                            
+                          <?php foreach($sliders AS $rwslide) :?>  
                           <div class="item">
-                             <img src="<?php echo base_url() ;?>assets/uploads/sliders/603074_10200797453925873_1917385995_n_wide.jpg" alt="slider 1" class="img-responsive">
+                             <img src="<?php echo base_url() ;?>uploads/gallery/<?php echo $rwslide->slider_path.'/'.$rwslide->slider_img ;?>" alt="slider <?php echo $rwslide->slider_id ;?>" class="img-responsive">
                             <div class="carousel-caption">
                                 <div class="layer-out">
-                                    <h3>Caption 1</h3>
+                                    <h3><?php echo $rwslide->slider_title ;?></h3>
                                 </div>
                                 
-                                <p>lorem ipsum dolor amet</p>
+                               <p><?php echo $rwslide->slider_caption ;?></p>
                             </div>
                           </div>
+                          <?php endforeach;?>  
                         </div>
 
                         <!-- Controls -->
@@ -104,7 +113,9 @@
                 
                 <div class="row">
                     <div class="col-lg-12 marquee">
-                            Selamat ulang tahun kepada Bapak Antoneta Lodia Hutuely yang ke 57, - Selamat Ulang tahun Perkawinan kepada Bapak ANTONETA LODIA HUTUELY & Ibu Sthepanny Akyuwen
+                        <?php foreach ($birthday AS $bd) :?>
+                            <?php echo 'Selamat Ulang Tahun Kepada: '. $bd->first_name.' '.$bd->last_name ;?> ,-
+                            <?php endforeach ;?>
                     </div>
                 </div>
 
@@ -114,31 +125,15 @@
                     <h4>CATATAN DARI MEJA PENDETA</h4>
                         <div class="border-red"></div>
                         <div class="border-grey"></div>
-
+                        <?php foreach($catatan AS $cat) :?>
                         <div class="news-item">
                             <img src="http://placehold.it/120x80" />
                             <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
+                                <div class="news-item-text date"><?php echo indonesian_date($cat->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><?php echo anchor('home/berita/'.$cat->slug, $cat->title) ;?></div>
                             </div>
-                            
                         </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">barang siapa takut ia tidak sempurna </a></div>
-                            </div>
-                            
-                        </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
-                            </div>
-                            
-                        </div>
+                        <?php endforeach;?>
 
               
                     <div class="clearfix"></div>    
@@ -146,65 +141,38 @@
                         <div class="border-red"></div>
                         <div class="border-grey"></div>
                         
-                        
+                        <?php foreach($sinodes AS $sinode) :?>
                         <div class="news-item">
                             <img src="http://placehold.it/120x80" />
                             <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
+                                <div class="news-item-text date"><?php echo indonesian_date($sinode->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><?php echo anchor('home/berita/'.$sinode->slug, $sinode->title) ;?></div>
                             </div>
                             
                         </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">barang siapa takut ia tidak sempurna </a></div>
-                            </div>
-                            
-                        </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
-                            </div>
-                            
-                        </div>
+                        <?php endforeach;?>
                         
                         <div class="clearfix"></div>
                         <h4>INFORMASI SEKRETARIAT</h4>
                         <div class="border-red"></div>
                         <div class="border-grey"></div>
                         
+                        <?php foreach($sekretariats AS $sekre) :?>
                         
                         <div class="news-item">
                             <img src="http://placehold.it/120x80" />
                             <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
+                                <div class="news-item-text date"><?php echo indonesian_date($sekre->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><a href="#"><?php echo anchor('home/berita/'.$sekre->slug, $sekre->title) ;?></div>
                             </div>
                             
                         </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">barang siapa takut ia tidak sempurna </a></div>
-                            </div>
-                            
-                        </div>
-                        <div class="news-item">
-                            <img src="http://placehold.it/120x80" />
-                            <div class="news-item-text">
-                                <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                <div class="news-item-text caption"><a href="#">memaknai peristiwa pentakosta </a></div>
-                            </div>
-                            
-                        </div>
+                        
+                        <?php endforeach;?>
+                       
                 </div>
 
-                <div class="col-lg-6 main-news">
+                <div class="col-lg-6">
                     <div class="searchbar">
                         <form role="search">
                         <div class="input-group">
@@ -215,90 +183,11 @@
                         </div>
                         </form>
                     </div>
-                    <div class="clearfix"></div>
-
-                     <?php $this->load->view($content_template) ;?>
-                    
+                    <div class="clearfix"></div>  
                 </div>
+               
+                <?php $this->load->view($content_template) ;?>
                 
-                <div class="col-md-3">
-                    
-                     <h4>SELAMAT ULANG TAHUN</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        <div class="right-event">
-                            <ul>
-                                <li><a href="#">Bp. Antoneta LODIA HOTUELY</a></li>
-                                <li><a href="#">Sdri Sthepanny Akyuwen</a></li>
-                                <li><a href="#">Ibu Dkn MEIKE SONDAKH MAMBU</a></li>
-                                <li><a href="#">Sdr MATHIAS MATEOS</a></li>
-                            </ul>
-                        </div>
-                        
-                        <h4>SELAMAT ULANG TAHUN PERKAWINAN</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        <div class="right-event">
-                            <ul>
-                                <li><a href="#">Bp. Antoneta LODIA HOTUELY & Ibu Dkn MEIKE SONDAKH MAMBU</a></li>
-                                <li><a href="#">Bp. MATHIAS MATEOS & Ibu STHEPANNY AKYUWEN</a></li>
-                            </ul>
-                        </div>
-                        
-                        
-                        <h4>BERITA GPIB IMMANUEL PEKANBARU</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        
-                        <div class="news">
-                                <div class="news-item">
-                                    <img src="http://placehold.it/100x80" />
-                                    <div class="news-item-text">
-                                        <div class="news-item-text date">Selasa, 26 Mei 2015</div>
-                                        <div class="news-item-text caption"><a href="#">Pemberkatan Perkawinan Kudus - Sabtu, 6 Juni 2015</a></div>
-                                    </div>
-
-                                </div>
-                        </div>
-                        
-                        <div class="clearfix"></div>
-                        
-                        <div class="right-event">
-                            <div class="title">Selasa, 26 Mei 2015</div>
-                            <a>LOWONGAN PEKERJAAN Dibutuhkan Tenaga Mechanical Enginering</a>
-                        </div>
-                        
-                         <div class="right-event">
-                            <div class="title">Selasa, 26 Mei 2015</div>
-                            <a>SEMINAR PERSEPULUHAN dan MEMBERI DENGAN IMAN by Pdt H Ongirwalu</a>
-                        </div>
-                        
-                        <div class="clearfix"></div>
-                        
-                        <h4>JEMAAT SAKIT DAN MOHON DUKUNGAN DOA</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        
-                        <div class="right-event">
-                            <div class="title">Selasa, 26 Mei 2015</div>
-                            <a>Jemaat yang Sakit Minggu, 10 Mei 2015</a>
-                        </div>
-                        
-                        <div class="right-event">
-                            <div class="title">Selasa, 26 Mei 2015</div>
-                            <a>Jemaat yang Sakit Minggu, 10 Mei 2015</a>
-                        </div>
-                        
-                        <div class="right-event">
-                            <div class="title">Selasa, 26 Mei 2015</div>
-                            <a>Jemaat yang Sakit Minggu, 10 Mei 2015</a>
-                        </div>  
-                    
-                </div>
                 <div class="clearfix"></div>
                 
                 <div class="col-lg-12 paddingless">
@@ -306,22 +195,16 @@
                         <h3>kegiatan penting minggu ini</h3>
                         <div class="col-lg-6">
                             <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Conse ctetur adipisicing</a></li>
-                                <li><a href="#">Reprehenderit voluptate</a></li>
-                                <li><a href="#">Eismod Tempor</a></li>
-                                <li><a href="#">Magna Aliqua</a></li>
-                                <li><a href="#">Cupidatat non proident</a></li>
+                                <?php foreach($events AS $ev) :?>
+                                <li><?php echo anchor('home/berita/'.$ev->slug, $ev->title) ;?></li>
+                                <?php endforeach ?>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Conse ctetur adipisicing</a></li>
-                                <li><a href="#">Reprehenderit voluptate</a></li>
-                                <li><a href="#">Eismod Tempor</a></li>
-                                <li><a href="#">Magna Aliqua</a></li>
-                                <li><a href="#">Cupidatat non proident</a></li>
+                                <?php foreach($others AS $other) :?>
+                                    <li><?php echo anchor('home/berita/'.$other->slug, $other->title);?></li>
+                                <?php endforeach ?>
                             </ul>
                         </div>
                     </div>
