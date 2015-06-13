@@ -25,6 +25,7 @@ class Gallery extends CI_Controller {
                 $data['jsPage'] ='';
                 
                 $data['map'] = $map;
+                $data['sliders']    = $this->mod->select_all();
                 //$data['allCategory'] = $this->category_model->listCat();
 
                 $this->load->view('admin/header',$data);
@@ -135,7 +136,7 @@ class Gallery extends CI_Controller {
                             redirect('gallery/path/'.$path,'location',302);
                     }
                     else{
-                        $now = now("Y-m-d H:i:s");
+                        $now = date("Y-m-d H:i:s");
                         $dataimage = $this->upload->data();
                         $fields = array(
                                     'slider_path'              => $path,
@@ -145,6 +146,8 @@ class Gallery extends CI_Controller {
                                     'created_at'                => $now
                                 );
                         $this->mod->insert_new_gallery($fields);
+                        
+                        redirect('gallery','location',302);
     
             }
         }    
@@ -183,15 +186,26 @@ class Gallery extends CI_Controller {
         }
         
     }
-function delete_old_images($id){
+    
+    function remove_files($path, $image){
         
-        $row = $this->mod->get_row($id);
+        $completepath = './uploads/gallery/'.$path.'/'.$image;
+        $this->load->helper("file"); // load the helper
+        unlink($completepath); // delete all files/folders
         
-        $this->load->helper('file');
+        redirect('gallery/path/'.$path,'location',302);
         
-        unlink('./uploads/images/'.$row->image);
+        //echo $completepath;
         
-        unlink('./uploads/_thumbs/'.$row->image);
+        
+    }
+    
+    function remove_slider($id){
+        
+        $this->mod->delete_row($id);
+        
+        redirect('gallery','location',302);
+        
         
     }
     

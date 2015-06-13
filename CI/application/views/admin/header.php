@@ -14,7 +14,7 @@
     <style type="text/css">
         .formslider { display:none };
     </style>
-    
+    <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
     <!-- Theme style -->
     <link href="<?php echo base_url(); ?>assets/admin/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>assets/admin/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
             <li><a href="<?php echo base_url(); ?>category/listing"><i class='fa fa-list'></i> <span>Kategori Berita</span></a></li>
             <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-edit'></i> <span>Post Berita</span></a></li>
             <li><a href="<?php echo base_url(); ?>gallery"><i class='fa fa-users'></i> <span>Galery Foto</span></a></li>
-            <li><a href="<?php echo base_url(); ?>#"><i class='fa fa-users'></i> <span>File Management</span></a></li>
+            <li><a href="<?php echo base_url(); ?>ckeditor"><i class='fa fa-users'></i> <span>File Management</span></a></li>
             <li class="header">PANEL JEMAAT</li>
             <li class="treeview">
               <a href="#"><i class='fa fa-user'></i> <span>Jemaat GPIB</span> <i class="fa fa-angle-left pull-right"></i></a>

@@ -36,7 +36,7 @@ class Template {
                 $data['title']          = $this->CI->config->item('site_title');
 		//$data['site_email'] 	= $this->CI->config->item('site_email');
                 
-                //$data['flashdata']      = '../content/flashdata';
+                //$data['date']      = '../content/indonesian_date';
 		//$data['js_variables']	= '../content/js_vars';
 
 		$this->CI->load->vars($data);

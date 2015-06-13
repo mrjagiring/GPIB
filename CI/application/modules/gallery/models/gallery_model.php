@@ -31,7 +31,7 @@ class Gallery_model extends CI_Model {
     
     function get_row($id){
         
-        $this->db->where('id',$id);
+        $this->db->where('slider_id',$id);
         $query = $this->db->get($this->img);
         
         return $query->row();
@@ -40,7 +40,7 @@ class Gallery_model extends CI_Model {
     function update($id){
         
         $this->db->set('caption', $this->input->post('caption'));
-        $this->db->where('id',$id);
+        $this->db->where('slider_id',$id);
         $this->db->update($this->img);
         
     }
@@ -49,7 +49,7 @@ class Gallery_model extends CI_Model {
         
         $dataimage = $this->upload->data();
         $this->db->set('image',$dataimage['file_name']);
-        $this->db->where('id', $id);
+        $this->db->where('slider_id', $id);
         
         $this->db->update($this->img);
     }
@@ -63,7 +63,7 @@ class Gallery_model extends CI_Model {
     
     function delete_row($id){
         
-        $this->db->where('id',$id);
+        $this->db->where('slider_id',$id);
         $this->db->delete($this->img);
         
     }
