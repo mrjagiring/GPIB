@@ -11,6 +11,9 @@
     
     <!-- OPTIONAL CSS -->
     <?php echo $cssPage; ?>
+    <style type="text/css">
+        .formslider { display:none };
+    </style>
     
     <!-- Theme style -->
     <link href="<?php echo base_url(); ?>assets/admin/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
@@ -19,6 +22,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+     
   </head>
 
   <body class="skin-blue sidebar-mini">
@@ -88,7 +92,7 @@
             <li><a href="<?php echo base_url(); ?>page/listing"><i class='fa fa-sitemap'></i> <span>Menu Pages</span></a></li>
             <li><a href="<?php echo base_url(); ?>category/listing"><i class='fa fa-list'></i> <span>Kategori Berita</span></a></li>
             <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-edit'></i> <span>Post Berita</span></a></li>
-            <li><a href="<?php echo base_url(); ?>galery"><i class='fa fa-users'></i> <span>Galery Foto</span></a></li>
+            <li><a href="<?php echo base_url(); ?>gallery"><i class='fa fa-users'></i> <span>Galery Foto</span></a></li>
             <li><a href="<?php echo base_url(); ?>#"><i class='fa fa-users'></i> <span>File Management</span></a></li>
             <li class="header">PANEL JEMAAT</li>
             <li class="treeview">

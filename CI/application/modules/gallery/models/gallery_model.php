@@ -2,7 +2,7 @@
 
 class Gallery_model extends CI_Model {
     
-    var $img = 'tbl_images';
+    var $img = 'tbl_slider';
     
     /**
      * 
@@ -66,5 +66,11 @@ class Gallery_model extends CI_Model {
         $this->db->where('id',$id);
         $this->db->delete($this->img);
         
+    }
+    
+    function iterate() {
+        $this->load->helper('directory');
+        $map = directory_map('./uploads/gallery/', 1);
+        return $map;
     }
 }    

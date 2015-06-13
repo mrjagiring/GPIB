@@ -12,6 +12,48 @@ class Gallery extends CI_Controller {
     
     public function index(){
         
+        $isLogin = $this->session->userdata('logged_in');
+        
+        if ($isLogin === TRUE) {
+                
+                //map the folder which is in /uploads/gallery folder
+                $map = $this->mod->iterate();
+            
+                $this->form_validation->set_rules('dir','folder name','required');
+                if($this->form_validation->run()== FALSE){
+                $data['cssPage'] ='';
+                $data['jsPage'] ='';
+                
+                $data['map'] = $map;
+                //$data['allCategory'] = $this->category_model->listCat();
+
+                $this->load->view('admin/header',$data);
+                $this->load->view('index',$data);
+                $this->load->view('admin/footer');
+                }
+                else {
+                    
+                    $album = $this->input->post('dir');
+                    if (is_dir('./uploads/gallery'))
+                    {
+                        if(! mkdir('./uploads/gallery/' . $album, 0777, true)){
+                            
+                            echo 'Unable to create folder';
+                        }
+                    }
+                    
+                    $this->session->set_flashdata('msg','has completed create');
+                    
+                    redirect('gallery','location',302);
+                    
+                }
+        }
+        else{
+                redirect('secure/login');
+        }
+        
+        
+        /*
         $this->form_validation->set_rules('caption','caption','required');
         if($this->form_validation->run() == FALSE){
             
@@ -39,14 +81,39 @@ class Gallery extends CI_Controller {
             }
             
         }
+         * 
+         */
         
     }
     
-    function do_upload($user_file = 'image'){
-        
-            $valid = TRUE;
+    function path($path){
 
-            $config['upload_path']      = './uploads/images/';
+                $this->load->helper('directory');
+
+                 
+                $data['cssPage'] ='';
+                $data['jsPage'] ='';
+
+                $data['path']   = $path;
+                
+                
+                
+                $data['mapdata']    = directory_map('./uploads/gallery/'.$path);
+
+                //$data['allCategory'] = $this->category_model->listCat();
+
+                $this->load->view('admin/header',$data);
+                $this->load->view('path', $data);
+                $this->load->view('admin/footer');  
+                 
+                 
+    }
+    
+    function do_upload($user_file = 'image'){
+
+            $valid = TRUE;
+            $path = $this->input->post('path');
+            $config['upload_path']      = './uploads/gallery/'.$path;
             $config['allowed_types']    = 'gif|jpg|png';
             $config['max_size']         = '1000';
             $config['max_width']        = '0';
@@ -62,30 +129,27 @@ class Gallery extends CI_Controller {
             }
             else
             {
-                    $this->upload->set_upload_path('./uploads/_thumbs/');
-                    $this->upload->do_upload($user_file);
-
-                    $dataimage = $this->upload->data();
-                    $data = array('upload_data' => $this->upload->data());
-
-                    unset($config);
-                    $config['image_library']	= 'gd2';
-                    $config['source_image']     = $dataimage['full_path'];
-                    $config['create_thumb']	= FALSE;
-                    $config['maintain_ratio']	= TRUE;
-                    $config['width']		= 400;
-                    $config['height']		= 320;
-                    $this->image_lib->initialize($config);
-
-                    if( !$this->image_lib->resize() ) 
-                    {
-
-                        $valid = FALSE;
-                        //$this->session->set_flashdata('msg', $this->image_lib->display_errors('',''));
+                $checked = $this->input->post('slider');
+                    if(!$checked){
+                            //$this->upload->do_upload($user_file);
+                            redirect('gallery/path/'.$path,'location',302);
                     }
+                    else{
+                        $now = now("Y-m-d H:i:s");
+                        $dataimage = $this->upload->data();
+                        $fields = array(
+                                    'slider_path'              => $path,
+                                    'slider_title'             => $this->input->post('title'),
+                                    'slider_caption'           =>	$this->input->post("caption"),
+                                    'slider_img'             =>	$dataimage['file_name'],
+                                    'created_at'                => $now
+                                );
+                        $this->mod->insert_new_gallery($fields);
+    
             }
+        }    
 
-            return $valid;
+            
     }
     
     function delete($id){
@@ -119,27 +183,7 @@ class Gallery extends CI_Controller {
         }
         
     }
-    
-    function changimage($id){
-        
-        if($this->do_upload()){
-            
-                    $this->delete_old_images($id);
-            
-                    $this->mod->update_image($id);
-                    $this->session->set_flashdata('msg', 'Image Has Been Updated');
-                    redirect('gallery/','location',302);
-                }
-                else{
-                
-                redirect('gallery/edit/'.$id,'location',302);                
-            
-                    
-        }
-        
-    }
-    
-    function delete_old_images($id){
+function delete_old_images($id){
         
         $row = $this->mod->get_row($id);
         
