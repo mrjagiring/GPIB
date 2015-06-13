@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2015 at 06:49 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: 13 Jun 2015 pada 10.39
+-- Versi Server: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,32 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `gpib`
 --
-CREATE DATABASE IF NOT EXISTS `gpib` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `gpib`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Struktur dari tabel `ci_sessions`
 --
 
-DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `id` varchar(40) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
-  `data` blob NOT NULL
+  `data` blob NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ci_sessions_timestamp` (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_berita`
+-- Struktur dari tabel `tbl_berita`
 --
 
-DROP TABLE IF EXISTS `tbl_berita`;
 CREATE TABLE IF NOT EXISTS `tbl_berita` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
@@ -53,11 +51,12 @@ CREATE TABLE IF NOT EXISTS `tbl_berita` (
   `author` int(11) NOT NULL,
   `update_by` int(11) NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `tbl_berita`
+-- Dumping data untuk tabel `tbl_berita`
 --
 
 INSERT INTO `tbl_berita` (`id`, `cat_id`, `title`, `slug`, `desk`, `file`, `author`, `update_by`, `create_at`, `update_at`) VALUES
@@ -68,20 +67,20 @@ INSERT INTO `tbl_berita` (`id`, `cat_id`, `title`, `slug`, `desk`, `file`, `auth
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category`
+-- Struktur dari tabel `tbl_category`
 --
 
-DROP TABLE IF EXISTS `tbl_category`;
 CREATE TABLE IF NOT EXISTS `tbl_category` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `desk` text NOT NULL,
-  `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `parent_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `tbl_category`
+-- Dumping data untuk tabel `tbl_category`
 --
 
 INSERT INTO `tbl_category` (`id`, `title`, `slug`, `desk`, `parent_id`) VALUES
@@ -101,10 +100,9 @@ INSERT INTO `tbl_category` (`id`, `title`, `slug`, `desk`, `parent_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_jemaat`
+-- Struktur dari tabel `tbl_jemaat`
 --
 
-DROP TABLE IF EXISTS `tbl_jemaat`;
 CREATE TABLE IF NOT EXISTS `tbl_jemaat` (
   `id` varchar(18) NOT NULL DEFAULT '',
   `first_name` varchar(20) NOT NULL,
@@ -125,11 +123,12 @@ CREATE TABLE IF NOT EXISTS `tbl_jemaat` (
   `nikah_sipil` date NOT NULL DEFAULT '0000-00-00',
   `telp` varchar(15) DEFAULT NULL,
   `hp` varchar(15) DEFAULT NULL,
-  `alamat` varchar(255) NOT NULL
+  `alamat` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_jemaat`
+-- Dumping data untuk tabel `tbl_jemaat`
 --
 
 INSERT INTO `tbl_jemaat` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `relation`, `pob`, `dob`, `status_baptis`, `tempat_baptis`, `tanggal_baptis`, `status_sidi`, `tempat_sidi`, `tanggal_sidi`, `status_nikah`, `tanggal_nikah`, `nikah_sipil`, `telp`, `hp`, `alamat`) VALUES
@@ -304,12 +303,11 @@ INSERT INTO `tbl_jemaat` (`id`, `first_name`, `middle_name`, `last_name`, `gende
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_page`
+-- Struktur dari tabel `tbl_page`
 --
 
-DROP TABLE IF EXISTS `tbl_page`;
 CREATE TABLE IF NOT EXISTS `tbl_page` (
-`id` int(9) unsigned NOT NULL,
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(9) unsigned NOT NULL,
   `title` varchar(128) NOT NULL,
   `target` enum('#','page','category') NOT NULL,
@@ -318,11 +316,12 @@ CREATE TABLE IF NOT EXISTS `tbl_page` (
   `sequence` int(11) NOT NULL DEFAULT '0',
   `seo_title` text NOT NULL,
   `meta` text NOT NULL,
-  `url` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `tbl_page`
+-- Dumping data untuk tabel `tbl_page`
 --
 
 INSERT INTO `tbl_page` (`id`, `parent_id`, `title`, `target`, `menu_title`, `content`, `sequence`, `seo_title`, `meta`, `url`) VALUES
@@ -334,12 +333,27 @@ INSERT INTO `tbl_page` (`id`, `parent_id`, `title`, `target`, `menu_title`, `con
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users`
+-- Struktur dari tabel `tbl_slider`
 --
 
-DROP TABLE IF EXISTS `tbl_users`;
+CREATE TABLE IF NOT EXISTS `tbl_slider` (
+  `slider_id` int(5) NOT NULL AUTO_INCREMENT,
+  `slider_path` varchar(180) NOT NULL,
+  `slider_title` varchar(80) NOT NULL,
+  `slider_caption` varchar(120) NOT NULL,
+  `slider_img` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`slider_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_users`
+--
+
 CREATE TABLE IF NOT EXISTS `tbl_users` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(255) NOT NULL DEFAULT '',
@@ -348,11 +362,12 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `is_confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `is_confirmed` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data untuk tabel `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `email`, `password`, `fullname`, `avatar`, `created_at`, `updated_at`, `is_admin`, `is_confirmed`) VALUES
@@ -360,70 +375,6 @@ INSERT INTO `tbl_users` (`id`, `username`, `email`, `password`, `fullname`, `ava
 (2, 'victor', 'victorsiahaan03@gmail.com', '$2y$10$RtRdVt1krlAg4LzZITEbEuydto1iUIsuug0gJzkp9tymz0DPIbx72', 'Victor Siahaan', 'default.jpg', '2015-06-11 09:17:28', NULL, 0, 0),
 (3, 'admin', 'me@home.net', '$2y$10$sYHxetsCWr6W0hyRh1aaxeQoDC39O3IrcEwvxdGVhQEBz/3R7wjBm', 'Admin GPIB', 'default.jpg', '2015-06-11 09:32:16', NULL, 1, 1);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `ci_sessions`
---
-ALTER TABLE `ci_sessions`
- ADD PRIMARY KEY (`id`), ADD KEY `ci_sessions_timestamp` (`timestamp`);
-
---
--- Indexes for table `tbl_berita`
---
-ALTER TABLE `tbl_berita`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_category`
---
-ALTER TABLE `tbl_category`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_jemaat`
---
-ALTER TABLE `tbl_jemaat`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_page`
---
-ALTER TABLE `tbl_page`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_users`
---
-ALTER TABLE `tbl_users`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_berita`
---
-ALTER TABLE `tbl_berita`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `tbl_page`
---
-ALTER TABLE `tbl_page`
-MODIFY `id` int(9) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `tbl_users`
---
-ALTER TABLE `tbl_users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

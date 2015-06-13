@@ -14,6 +14,13 @@
     <!-- REQUIRED JS SCRIPTS -->
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url(); ?>assets/admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#slider').change(function () {                
+               $('.formslider').toggle(this.checked);
+            }).change(); //ensure visible state matches initially
+          });
+    </script>   
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
