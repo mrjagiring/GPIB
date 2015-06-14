@@ -136,18 +136,45 @@ class Gallery extends CI_Controller {
                             redirect('gallery/path/'.$path,'location',302);
                     }
                     else{
-                        $now = date("Y-m-d H:i:s");
-                        $dataimage = $this->upload->data();
-                        $fields = array(
-                                    'slider_path'              => $path,
-                                    'slider_title'             => $this->input->post('title'),
-                                    'slider_caption'           =>	$this->input->post("caption"),
-                                    'slider_img'             =>	$dataimage['file_name'],
-                                    'created_at'                => $now
-                                );
-                        $this->mod->insert_new_gallery($fields);
-                        
-                        redirect('gallery','location',302);
+                            $dataimage = $this->upload->data();
+                            $data = array('upload_data' => $this->upload->data());
+
+                            unset($config);
+                            $config['image_library']	= 'gd2';
+                            $config['source_image']     = $dataimage['full_path'];
+                            $config['create_thumb']	= FALSE;
+                            $config['maintain_ratio']	= TRUE;
+                            $config['width']		= 1368;
+                            $this->image_lib->initialize($config);
+
+                            $this->image_lib->resize();
+                            
+                            unset($config);
+                            $config['image_library']	= 'gd2';
+                            $config['source_image']     = $dataimage['full_path'];
+                            $config['create_thumb']	= FALSE;
+                            $config['maintain_ratio']	= FALSE;
+                            $config['width']		= 1368;
+                            $config['height']           = 522;
+                            $config['x_axis']           = '0';
+                            $config['y_axis']           = '0';
+                            
+                            $this->image_lib->initialize($config);
+
+                            $this->image_lib->crop();
+                            
+                            $now = date("Y-m-d H:i:s");
+
+                            $fields = array(
+                                        'slider_path'              => $path,
+                                        'slider_title'             => $this->input->post('title'),
+                                        'slider_caption'           =>	$this->input->post("caption"),
+                                        'slider_img'             =>	$dataimage['file_name'],
+                                        'created_at'                => $now
+                                    );
+                            $this->mod->insert_new_gallery($fields);
+
+                            redirect('gallery','location',302);
     
             }
         }    
