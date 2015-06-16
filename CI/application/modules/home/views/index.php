@@ -1,6 +1,73 @@
 <?php include('./application/views/content/indonesian_date.php');?>
+
+            <div class="col-lg-3 paddingless news">
+                    <h4>CATATAN DARI MEJA PENDETA</h4>
+                        <div class="border-red"></div>
+                        <div class="border-grey"></div>
+                        <?php foreach($catatan AS $cat) :?>
+                        <div class="news-item">
+                            <img src="http://placehold.it/120x80" />
+                            <div class="news-item-text">
+                                <div class="news-item-text date"><?php echo indonesian_date($cat->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><?php echo anchor('home/berita/'.$cat->slug, $cat->title) ;?></div>
+                            </div>
+                        </div>
+                        <?php endforeach;?>
+
+              
+                    <div class="clearfix"></div>    
+                    <h4>BERITA MAJELIS SINODE GPIB</h4>
+                        <div class="border-red"></div>
+                        <div class="border-grey"></div>
+                        
+                        <?php foreach($sinodes AS $sinode) :?>
+                        <div class="news-item">
+                            <img src="http://placehold.it/120x80" />
+                            <div class="news-item-text">
+                                <div class="news-item-text date"><?php echo indonesian_date($sinode->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><?php echo anchor('home/berita/'.$sinode->slug, $sinode->title) ;?></div>
+                            </div>
+                            
+                        </div>
+                        <?php endforeach;?>
+                        
+                        <div class="clearfix"></div>
+                        <h4>INFORMASI SEKRETARIAT</h4>
+                        <div class="border-red"></div>
+                        <div class="border-grey"></div>
+                        
+                        <?php foreach($sekretariats AS $sekre) :?>
+                        
+                        <div class="news-item">
+                            <img src="http://placehold.it/120x80" />
+                            <div class="news-item-text">
+                                <div class="news-item-text date"><?php echo indonesian_date($sekre->create_at, "l, j F Y") ;?></div>
+                                <div class="news-item-text caption"><a href="#"><?php echo anchor('home/berita/'.$sekre->slug, $sekre->title) ;?></div>
+                            </div>
+                            
+                        </div>
+                        
+                        <?php endforeach;?>
+                       
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="searchbar">
+                        <form role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control " placeholder="Search" name="srch-term" id="srch-term">
+                            <div class="input-group-btn">
+                                <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>  
+                </div>
+
+
 <div class="col-lg-6 main-news">
-    <img src="http://placehold.it/240x320" class="text-wrap"/>
+    <img src="http://placehold.it/240x320"/>
     <div class="category">Sermon</div>
     <div class="title-div">
         <h3><?php echo $headline->title ;?></h3>
@@ -27,71 +94,4 @@
         </div>
         <?php endforeach ?>
     </div>
- </div>
-
-<div class="col-md-3">
-                    
-                     <h4>SELAMAT ULANG TAHUN</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        <div class="right-event">
-                            <ul>
-                                <?php foreach($birthday AS $bd) :?>
-                                <li><?php echo anchor('home/jemaat/'.$bd->id, $bd->first_name.' '.$bd->last_name) ;?></li>
-                                <?php endforeach ;?>
-                            </ul>
-                        </div>
-                        
-                        <h4>SELAMAT ULANG TAHUN PERKAWINAN</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        <div class="right-event">
-                            <ul>
-                                <?php foreach($annivs AS $anniv) :?>
-                                    <li><?php echo anchor('home/jemaat/'.$anniv->id, $anniv->first_name.' '.$anniv->last_name) ;?></li>
-                                <?php endforeach;?>
-                            </ul>
-                        </div>
-                        
-                        
-                        <h4>BERITA GPIB IMMANUEL PEKANBARU</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        
-                        <div class="news">
-                            <?php foreach($weddings AS $wedding) :?>
-                                <div class="news-item">
-                                    <img src="http://placehold.it/100x80" />
-                                    <div class="news-item-text">
-                                        <div class="news-item-text date"><?php echo indonesian_date($wedding->create_at, "l, F j Y") ;?></div>
-                                        <div class="news-item-text caption"><?php echo anchor('home/berita/'.$wedding->slug, $wedding->title) ;?></div>
-                                    </div>
-
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                        
-                        <div class="clearfix"></div>
-                        <?php foreach($jobs AS $job) :?>
-                        <div class="right-event">
-                            <div class="title"><?php echo indonesian_date($job->create_at, "l, F j Y") ;?></div>
-                            <?php echo anchor('home/berita/'.$job->slug, $job->title) ;?>
-                        </div>
-                        <?php endforeach ?>
-                        <div class="clearfix"></div>
-                        
-                        <h4>JEMAAT SAKIT DAN MOHON DUKUNGAN DOA</h4>
-                        <div class="border-red"></div>
-                        <div class="border-grey"></div>
-                        <div class="clearfix"></div>
-                        <?php foreach($jemaatsakit AS $js) :?>
-                        <div class="right-event">
-                            <div class="title"><?php echo indonesian_date($js->create_at, "l, F j Y") ;?></div>
-                            <?php echo anchor('home/berita/'.$js->slug, $js->title) ;?>
-                        </div>
-                        <?php endforeach ?>
-                    
-                </div>
+ </div>   

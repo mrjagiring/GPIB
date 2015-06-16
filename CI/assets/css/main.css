@@ -472,3 +472,62 @@ h4
     float: right;
     margin-left: 30px;
 }
+
+.detail-home{
+    
+    min-height: 280px;
+    padding: 0 20px 20px 20px;
+    float: left;
+    text-align: justify;
+    margin-top: 20px;
+    
+}
+
+.detail-home img{
+    
+    float: left;
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    z-index: 10;
+    
+}
+
+.detail-home p{
+    
+    text-align: justify;
+}
+
+.related
+{
+    float: left;
+    width: 100%;
+}
+
+.related .item
+{
+    margin-top: 20px;
+    border-bottom: 1px #dddddd solid;
+}
+
+.related .item .title
+{
+    color: #000;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.related .item a
+{
+    color: #2b669a;
+    font-size: 1.0em;
+    font-style: italic;
+}
+
+.related .item .perikop
+{
+    color: #000;
+    font-size: 1.0em;
+    font-weight: bold;   
+}
