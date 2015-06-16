@@ -56,6 +56,8 @@ class Home extends CI_Controller {
                 $data['slider']     = $item_slider;
                 $data['sliders']    = $next_item;
                 
+                $data['page']   = $this->model->get_page();
+                
                 //right event data
                 $data['birthday']   = $this->model->get_birthday($current_month);
                 $data['annivs']     = $this->model->get_anniversary($current_month);
