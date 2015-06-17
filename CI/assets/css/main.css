@@ -96,8 +96,13 @@ h4
 {
     color: #5e5e5e;
     font-family: 'OptimaLTStd-Bold';
-    width: 180px;
-    font-size: 1.3em;
+    width: 200px;
+    font-size: 1.2em;
+}
+
+.dropdown-menu > li > a {
+
+    font-size: 1.0em;
 }
 
 .custom-carousel .carousel-caption

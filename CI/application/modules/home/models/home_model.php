@@ -238,6 +238,27 @@ Class Home_model extends CI_Model
             
         }
         
+        function get_detail_page($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->pg);
+            
+            return $query->row();
+            
+        }
+        
+        function get_related_page($id, $parentid){
+            
+            $this->db->where('id !=',$id);
+            $this->db->where_in('parent_id', $parentid);
+            $this->db->limit(5);
+            
+            $query = $this->db->get($this->pg);
+            
+            return $query->result();
+            
+        }
+        
         function has_child($id){
             
             $this->db->select('');
