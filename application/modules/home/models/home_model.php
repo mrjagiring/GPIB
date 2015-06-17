@@ -41,6 +41,14 @@ Class Home_model extends CI_Model
             return $result->result();
         }
     }
+
+    //detail
+    function getBySlug($slug)
+    {
+        $this->db->where('slug', $slug);
+        $query = $this->db->get($this->berita);
+        return $query->row();
+    }
         
         function get_catatan_dari_meja_pendeta(){
             

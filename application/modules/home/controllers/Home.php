@@ -6,17 +6,17 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 
-        $this->config->load('berita');
-        $this->load->library(array('form_validation','image_moo'));
-        $this->load->helper(array('html', 'file'));
-        $this->load->model('extractImage/extract_image_model', 'extract');
-        $this->load->model('home_model','model');
+                $this->config->load('berita');
+                $this->load->library(array('form_validation','image_moo'));
+                $this->load->helper(array('html', 'file'));
+                $this->load->model('extractImage/extract_image_model', 'extract');
+                $this->load->model('home_model','model');
 	}
 	
 	public function index()
 	{
-        $data['leftnews'] = $this->config->item('leftnews');
-        $data['rightnews'] = $this->config->item('rightnews');
+                $data['leftnews'] = $this->config->item('leftnews');
+                $data['rightnews'] = $this->config->item('rightnews');
         
 		$current_month = date("m");
 		$item_slider = $this->model->get_slider();
@@ -28,16 +28,9 @@ class Home extends CI_Controller {
 		$data['slider']	 = $item_slider;
 		$data['sliders']	= $next_item;
 
-		$data['catatan']	= $this->model->get_catatan_dari_meja_pendeta();
-		$data['sinodes']	= $this->model->get_berita_majelis_sinode_gpib();
-		$data['sekretariats']   = $this->model->get_informasi_sekretariats();
-
 		$data['birthday']   = $this->model->get_birthday($current_month);
 		$data['annivs']	 = $this->model->get_anniversary($current_month);
-		$data['weddings']	= $this->model->get_wedding();
-				
-		$data['jobs']	= $this->model->get_jobs_vacancy();
-		$data['jemaatsakit']	= $this->model->get_jemaat_sakit();
+
 		$data['events']		 = $this->model->get_event();
 		$data['others']		 = $this->model->get_others();
 				
@@ -45,30 +38,28 @@ class Home extends CI_Controller {
 	}
 		
 	function berita($slug){
+                $data['rightnews'] = $this->config->item('rightnews');
 		$current_month = date("m");
 			
 		//slider
-		$item_slider = $this->model->get_slider();
-		$next_item  = $this->model->next_item_slider($item_slider->slider_id);
-		$data['slider']	 = $item_slider;
-		$data['sliders']	= $next_item;
+		$item_slider          = $this->model->get_slider();
+		$next_item            = $this->model->next_item_slider($item_slider->slider_id);
+		$data['slider']       = $item_slider;
+		$data['sliders']      = $next_item;
 			
-		$data['page']   = $this->model->get_page();
+		$data['page']         = $this->model->get_page();
 			
 		//right event data
-		$data['birthday']   = $this->model->get_birthday($current_month);
-		$data['annivs']	 = $this->model->get_anniversary($current_month);
-		$data['weddings']	= $this->model->get_wedding();
-				
-		$data['jobs']	= $this->model->get_jobs_vacancy();
-		$data['jemaatsakit']	= $this->model->get_jemaat_sakit();
-		$data['events']		 = $this->model->get_event();
-		$data['others']		 = $this->model->get_others();
+		$data['birthday']     = $this->model->get_birthday($current_month);
+		$data['annivs']       = $this->model->get_anniversary($current_month);
+
+		$data['events']       = $this->model->get_event();
+		$data['others']       = $this->model->get_others();
 				
 		//detail post
-		$data['post']	   = $this->model->get_berita_by_slug($slug);
+		$data['post']         = $this->model->getBySlug($slug);
 				
-		$this->template->display('detail',$data);
+		$this->template->display('detail', $data);
 	}
 		
 	function page($id){
