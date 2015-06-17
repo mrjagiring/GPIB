@@ -47,7 +47,7 @@
                             <nav class="navbar navdecoration pull-right text-center">
                               <div class="menunav">
                                   <ul class="nav navbar-nav navbar-right">
-                                  <li><a href="#">Home</a></li>
+                                  <li><?php echo anchor('/', 'Home') ;?></li>
                                   <?php foreach($page AS $pg):?>
                                    <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $pg->title ;?></a>
@@ -57,12 +57,13 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <?php $childmenu = $this->Home_model->follow_parent_id($pg->id) ;?>
                                         <?php foreach ($childmenu AS $menu) :?>
-                                            <li><?php echo anchor($menu->url, $menu->title) ;?></li>
+                                            <li><?php echo anchor('home/page/'.$menu->id, $menu->title) ;?></li>
                                         <?php endforeach;?>    
                                     </ul>
                                   </li>
                                     <?php }?>
                                   <?php endforeach;?>
+                                  <li><?php echo anchor('home/gallery','Gallery') ;?></li>
                                   </ul>
                                 </div><!--/.nav-collapse -->
                             </nav>
