@@ -51,8 +51,9 @@
                        
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="searchbar">
+
+<div class="col-lg-6 main-news">
+    <div class="searchbar">
                         <form role="search">
                         <div class="input-group">
                             <input type="text" class="form-control " placeholder="Search" name="srch-term" id="srch-term">
@@ -62,11 +63,6 @@
                         </div>
                         </form>
                     </div>
-                    <div class="clearfix"></div>  
-                </div>
-
-
-<div class="col-lg-6 main-news">
     <img src="http://placehold.it/240x320"/>
     <div class="category">Sermon</div>
     <div class="title-div">

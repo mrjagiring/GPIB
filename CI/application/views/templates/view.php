@@ -133,12 +133,8 @@
                 </div>
 
                 <div class="clearfix"></div>
-
-                
-               
                 <?php $this->load->view($content_template) ;?>
                 <div class="col-md-3">
-                    
                      <h4>SELAMAT ULANG TAHUN</h4>
                         <div class="border-red"></div>
                         <div class="border-grey"></div>
