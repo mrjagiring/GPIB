@@ -7,6 +7,8 @@ Class Home_model extends CI_Model
         var $cat    = 'tbl_category';
         var $jemaat = 'tbl_jemaat';
         var $slider = 'tbl_slider';
+        var $user   = 'tbl_users';
+        var $pg     = 'tbl_page';
     
 	function __constuct()
 	{
@@ -197,10 +199,60 @@ Class Home_model extends CI_Model
         //detail
         function get_berita_by_slug($slug){
             
-            $this->db->where('slug', $slug);
-            $query = $this->db->get($this->berita);
-            
+            $this->db->select('b.id AS postid, b.cat_id, b.title, b.slug, b.create_at, b.desk, b.file, b.author, c.id, c.title AS category, u.id, u.username', false);
+            $this->db->from($this->berita.' AS b');
+            $this->db->join($this->cat.' AS c','c.id = b.cat_id');
+            $this->db->join($this->user.' AS u','u.id = b.author');
+            $this->db->where('b.slug',$slug);
+            $query = $this->db->get();
+
             return $query->row();
+
+
+        }
+        
+        function get_related_detail($catid, $id){
+            
+            $this->db->select('b.id, b.cat_id, b.title, b.slug, b.create_at, b.desk, b.file,c.id, c.title AS category', false);
+            $this->db->from($this->berita.' AS b');
+            $this->db->join($this->cat.' AS c','c.id = b.cat_id');
+            $this->db->where('b.id !=', $id);
+            $this->db->where_in('b.cat_id', $catid);
+            $this->db->order_by('b.create_at','desc');
+            $this->db->limit(5);
+            $query = $this->db->get();
+
+            return $query->result();
+            
+        }
+        
+        //PAGE
+        
+        function get_page(){
+            
+            $this->db->select('');
+            $this->db->where('parent_id','0');
+            $query = $this->db->get($this->pg);
+            
+            return $query->result();
+            
+        }
+        
+        function has_child($id){
+            
+            $this->db->select('');
+            $this->db->where('parent_id',$id);
+            $this->db->count_all_results($this->pg);
+            
+        }
+        
+        function follow_parent_id($id){
+            
+            $this->db->select('');
+            $this->db->where('parent_id',$id);
+            $query = $this->db->get($this->pg);
+            
+            return $query->result();
             
         }
         

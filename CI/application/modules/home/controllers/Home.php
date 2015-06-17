@@ -18,7 +18,7 @@ class Home extends CI_Controller {
                 $item_slider = $this->model->get_slider();
                 $next_item  = $this->model->next_item_slider($item_slider->slider_id);
                 
-                
+                $data['page']   = $this->model->get_page();
                 
                 $data['headline'] = $this->model->get_first_sermon();
                 $data['slider']     = $item_slider;
@@ -40,19 +40,49 @@ class Home extends CI_Controller {
                 
                 
                 
+                
+                
 		$this->template->display('index',$data);
  
 	}
         
         function berita($slug){
                 
-                echo $slug;
+                $current_month = date("m");
+                
+                //slider
+                $item_slider = $this->model->get_slider();
+                $next_item  = $this->model->next_item_slider($item_slider->slider_id);
+                $data['slider']     = $item_slider;
+                $data['sliders']    = $next_item;
+                
+                $data['page']   = $this->model->get_page();
+                
+                //right event data
+                $data['birthday']   = $this->model->get_birthday($current_month);
+                $data['annivs']     = $this->model->get_anniversary($current_month);
+                $data['weddings']    = $this->model->get_wedding();
+                
+                
+                $data['jobs']    = $this->model->get_jobs_vacancy();
+                $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
+                $data['events']         = $this->model->get_event();
+                $data['others']         = $this->model->get_others();
+                
+                //detail post
+                $data['post']       = $this->model->get_berita_by_slug($slug);
+                
+                $this->template->display('detail',$data);
             
         }
         
         function jemaat($id){
             
             echo $id;
+            
+        }
+        
+        function page($slug){
             
         }
         
