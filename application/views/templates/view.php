@@ -156,7 +156,9 @@
                     <div class="right-event">
                         <ul>
                             <?php foreach($annivs AS $anniv) :?>
-                                <li><?php echo anchor('home/jemaat/'.$anniv->id, $anniv->f_name.' '.$anniv->l_name) ;?></li>
+                                <?php $suami = $this->jemaat->getJemaat($anniv->suami);?>
+                                <?php $istri = $this->jemaat->getJemaat($anniv->istri);?>
+                                <li><?php echo anchor('home/jemaat/'.$anniv->id, $suami['f_name'] .' '. $suami['l_name'] .' & '. $istri['f_name'].' '. $istri['l_name']) ;?></li>
                             <?php endforeach;?>
                         </ul>
                     </div>

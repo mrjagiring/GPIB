@@ -92,7 +92,9 @@
             <li><a href="<?php echo base_url(); ?>page/listing"><i class='fa fa-sitemap'></i> <span>Menu Pages</span></a></li>
             <li><a href="<?php echo base_url(); ?>category/listing"><i class='fa fa-list'></i> <span>Kategori Berita</span></a></li>
             <li><a href="<?php echo base_url(); ?>berita/listing"><i class='fa fa-edit'></i> <span>Post Berita</span></a></li>
-            <li><a href="<?php echo base_url(); ?>gallery"><i class='fa fa-users'></i> <span>Galery Foto</span></a></li>
+            <li><a href="<?php echo base_url(); ?>sbu/listing"><i class='fa fa-edit'></i> <span>Post SBU</span></a></li>
+            <li><a href="<?php echo base_url(); ?>kegiatan/listing"><i class='fa fa-calendar'></i> <span>Kegiatan Sepekan</span></a></li>
+            <li><a href="<?php echo base_url(); ?>gallery"><i class='fa fa-file-image-o'></i> <span>Galery Foto</span></a></li>
             <li class="header">PANEL JEMAAT</li>
             <li class="treeview">
               <a href="#"><i class='fa fa-user'></i> <span>Jemaat GPIB</span> <i class="fa fa-angle-left pull-right"></i></a>

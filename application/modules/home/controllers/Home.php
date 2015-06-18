@@ -11,6 +11,7 @@ class Home extends CI_Controller {
                 $this->load->helper(array('html', 'file'));
                 $this->load->model('extractImage/extract_image_model', 'extract');
                 $this->load->model('home_model','model');
+                $this->load->model('jemaat/jemaat_model', 'jemaat');
 	}
 	
 	public function index()
