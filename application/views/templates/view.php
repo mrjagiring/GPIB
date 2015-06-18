@@ -73,30 +73,34 @@
                 <?php $this->load->view($content_template) ;?>
 
                 <div class="col-md-3 ">
+                    <?php if($birthday){ ?>
                     <h4>SELAMAT ULANG TAHUN</h4>
                     <div class="border-red"></div>
                     <div class="border-grey"></div>
                     <div class="clearfix"></div>
                     <div class="right-event">
                         <ul>
-                            <?php foreach($birthday AS $bd) :?>
-                            <li><?php echo anchor('home/jemaat/'.$bd->id, $bd->f_name.' '.$bd->l_name) ;?></li>
+                            <?php foreach($birthday AS $key => $value) :?>
+                            <li><?php echo anchor('home/jemaat/'.$value[0]->id, $value[0]->f_name. ' '.$value[0]->l_name) ;?></li>
                             <?php endforeach ;?>
                         </ul>
                     </div>
-                        
+                    <?php }?>
                     <h4>SELAMAT ULANG TAHUN PERKAWINAN</h4>
                     <div class="border-red"></div>
                     <div class="border-grey"></div>
                     <div class="clearfix"></div>
                     <div class="right-event">
                         <ul>
-                            <?php foreach($annivs AS $anniv) :?>
-                                <li><?php echo anchor('home/jemaat/'.$anniv->id, $anniv->f_name.' '.$anniv->l_name) ;?></li>
+                            <?php foreach($annivs AS $ann) :?>
+                                <?php $this->load->model('home_model');?>
+                                <?php $suami = $this->home_model->get_jemaat_detail($ann->suami);?>
+                                <?php $istri = $this->home_model->get_jemaat_detail($ann->istri);?>
+                                <li><?php echo anchor('home/anniversary/'.$ann->id, $suami->f_name.' '.$suami->l_name. ' & '.$istri->f_name.' '.$istri->l_name) ;?></li>
                             <?php endforeach;?>
+                            
                         </ul>
-                    </div>
-
+                    </div> 
                     <?php foreach ($rightnews as $parent => $rn){
                     $name = $rn['name'];
                     $limit = $rn['limit'];

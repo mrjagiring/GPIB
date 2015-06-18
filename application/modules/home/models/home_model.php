@@ -115,33 +115,75 @@ Class Home_model extends CI_Model
             
             return $query->result();
         }
-        
-        function get_birthday($current_month){
-            
-            $this->db->select('');
-            $this->db->like('dob', $current_month);
-            $this->db->order_by('dob','desc');
-            $this->db->limit(5);
-            
+        /*
+         *Birthday
+         */
+        function get_birthday(){ 
+
+            $this->db->select('');  
             $query = $this->db->get($this->jemaat);
             
             return $query->result();
             
         }
-        
-        function get_anniversary($current_month){
+        /**
+         * 
+         * ANNIVERSARY
+         * @return type
+         */
+        function get_anniversary(){
             
             $this->db->select('');
-            $this->db->like('tanggal', $current_month);
-            $this->db->order_by('id','desc');
-            $this->db->limit(5);
+            $current_month = date("m");
+            $query = $this->db->get('tbl_nikah');
             
+            $nexttwo = strtotime(date("m", strtotime('this month')) . " +2 month");
+            
+            
+            foreach ($query->result() as $row)
+            {
+                $tanggal = date("m", strtotime($row->tanggal));
+                if($tanggal == $current_month){
+                    
+                    $rowid[] = $row->id;
+                }
+                elseif($tanggal >= $current_month || $tanggal <= $nexttwo){
+                    $rowid[] = $row->id;
+                }
+               
+            }
+            
+            return $rowid;
+            
+            
+            
+        }
+        
+        function get_anniversary_couple(){
+            
+            $id = $this->get_anniversary();
+            $this->db->where_in('id',$id);
+            $this->db->order_by('tanggal','ASC');
+            $this->db->limit(5);
             $query = $this->db->get('tbl_nikah');
             
             return $query->result();
             
         }
         
+        function get_detail_anniv($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get('tbl_nikah');
+            
+            return $query->row();
+            
+        }
+        
+        
+        /*
+         * Weddubg Event
+         */
         function get_wedding(){
             
             $this->db->select('');
@@ -165,6 +207,25 @@ Class Home_model extends CI_Model
             $query = $this->db->get($this->berita);
             
             return $query->result();
+            
+        }
+
+        function get_jemaat_bday($id){
+            
+            $this->db->where_in('id', $id);
+            $this->db->order_by('dob','ASC');
+            $query = $this->db->get($this->jemaat);
+            
+            return $query->result();
+            
+        }
+        
+        function get_jemaat_detail($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->jemaat);
+            
+            return $query->row();
             
         }
         

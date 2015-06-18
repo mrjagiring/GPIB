@@ -53,11 +53,16 @@
         <div class="clearfix"></div>
                 
                 <div class="row">
+                    <?php if($birthday){?>
                     <div class="col-lg-12 marquee">
-                        <?php foreach ($birthday AS $bd) :?>
-                            <?php echo 'Selamat Ulang Tahun Kepada: '.  $bd->f_name.' '.$bd->l_name ;?> ,-
+                        
+                        <?php foreach($birthday AS $key => $value) :?>
+                            <?php $thisyear = new DateTime('today'); $jemaatyear = new DateTime($value[0]->dob); $age = $jemaatyear->diff($thisyear)->y?>
+                            <?php echo 'Selamat Ulang Tahun Kepada: '.  $value[0]->f_name.' '.$value[0]->l_name .' Yang Ke - '.$age ;?> ,-
                             <?php endforeach ;?>
+                          
                     </div>
+                    <?php } ?>  
                 </div>
 
         <div class="clearfix"></div>

@@ -14,12 +14,17 @@ class Home extends CI_Controller {
                 $this->load->model('search_model','search');
 	}
 	
+        /**
+         * 
+         * INDEX HOME
+         * 
+         */
 	public function index()
 	{
                 $data['leftnews'] = $this->config->item('leftnews');
                 $data['rightnews'] = $this->config->item('rightnews');
-        
-		$current_month = date("m");
+	
+                
 		$item_slider = $this->model->get_slider();
 		$next_item  = $this->model->next_item_slider($item_slider->slider_id);
 				
@@ -29,18 +34,22 @@ class Home extends CI_Controller {
 		$data['slider']	 = $item_slider;
 		$data['sliders']	= $next_item;
 
-		$data['birthday']   = $this->model->get_birthday($current_month);
-		$data['annivs']	 = $this->model->get_anniversary($current_month);
+		$data['birthday']       = $this->getBirthday();
+		$data['annivs']         = $this->model->get_anniversary_couple();
 
 		$data['events']		 = $this->model->get_event();
 		$data['others']		 = $this->model->get_others();
 				
 		$this->template->display('index',$data);
 	}
-		
+	/**
+         * 
+         * BERITA
+         * @param slug
+         * 
+         */	
 	function berita($slug){
                 $data['rightnews'] = $this->config->item('rightnews');
-		$current_month = date("m");
 			
 		//slider
 		$item_slider          = $this->model->get_slider();
@@ -51,8 +60,8 @@ class Home extends CI_Controller {
 		$data['page']         = $this->model->get_page();
 			
 		//right event data
-		$data['birthday']     = $this->model->get_birthday($current_month);
-		$data['annivs']       = $this->model->get_anniversary($current_month);
+		$data['birthday']     = $this->getBirthday();
+		$data['annivs']         = $this->model->get_anniversary_couple();
 
 		$data['events']       = $this->model->get_event();
 		$data['others']       = $this->model->get_others();
@@ -62,13 +71,15 @@ class Home extends CI_Controller {
 				
 		$this->template->display('detail', $data);
 	}
-		
+	/**
+         * 
+         * PAGE
+         * @param type $id
+         */	
 	function page($id){
             
                 $data['rightnews'] = $this->config->item('rightnews');
-            
-                $current_month = date("m");
-                
+                            
                 //slider
                 $item_slider = $this->model->get_slider();
                 $next_item  = $this->model->next_item_slider($item_slider->slider_id);
@@ -78,8 +89,8 @@ class Home extends CI_Controller {
                 $data['page']   = $this->model->get_page();
                 
                 //right event data
-                $data['birthday']   = $this->model->get_birthday($current_month);
-                $data['annivs']     = $this->model->get_anniversary($current_month);
+                $data['birthday']     = $this->getBirthday();
+		$data['annivs']         = $this->model->get_anniversary_couple();
                 $data['weddings']    = $this->model->get_wedding();
                 
                 
@@ -95,11 +106,13 @@ class Home extends CI_Controller {
             
         }
         
+        /*
+         * 
+         * GALLERY
+         * 
+         */
         
-        function gallery(){
-            
-                $current_month = date("m");
-                
+        function gallery(){                
                 //slider
                 
                 $data['page']   = $this->model->get_page();
@@ -107,8 +120,8 @@ class Home extends CI_Controller {
                  $data['rightnews'] = $this->config->item('rightnews');
                 
                 //right event data
-                $data['birthday']   = $this->model->get_birthday($current_month);
-                $data['annivs']     = $this->model->get_anniversary($current_month);
+                $data['birthday']     = $this->getBirthday();
+		$data['annivs']         = $this->model->get_anniversary_couple();
                 $data['weddings']    = $this->model->get_wedding();
                 
                 
@@ -127,8 +140,6 @@ class Home extends CI_Controller {
         }
         
         function item_gallery($folder){
-            
-                $current_month = date("m");
                 
                 //slider
                  $data['rightnews'] = $this->config->item('rightnews');
@@ -136,8 +147,8 @@ class Home extends CI_Controller {
                 $data['page']   = $this->model->get_page();
                 
                 //right event data
-                $data['birthday']   = $this->model->get_birthday($current_month);
-                $data['annivs']     = $this->model->get_anniversary($current_month);
+                $data['birthday']     = $this->getBirthday();
+		$data['annivs']         = $this->model->get_anniversary_couple();
                 $data['weddings']    = $this->model->get_wedding();
                 
                 
@@ -158,10 +169,16 @@ class Home extends CI_Controller {
             
         }
         
+        /*
+         * 
+         * SEARCH
+         * 
+         * 
+         */
+        
         function search(){
             
             $data['rightnews'] = $this->config->item('rightnews');
-            $current_month = date("m");
             
             $term = $this->input->post('srch-term');
             
@@ -169,8 +186,8 @@ class Home extends CI_Controller {
             $data['page']   = $this->model->get_page();
                 
             //right event data
-            $data['birthday']   = $this->model->get_birthday($current_month);
-            $data['annivs']     = $this->model->get_anniversary($current_month);
+            $data['birthday']     = $this->getBirthday();
+            $data['annivs']         = $this->model->get_anniversary_couple();
             $data['weddings']    = $this->model->get_wedding();
 
 
@@ -197,5 +214,108 @@ class Home extends CI_Controller {
             }
             
         }
-  
+        
+        /*
+         * JEMAAT
+         */
+        function jemaat($id){
+                
+            //slider
+
+            $data['page']   = $this->model->get_page();
+
+             $data['rightnews'] = $this->config->item('rightnews');
+
+            //right event data
+            $data['birthday']   = $this->getBirthday();
+            $data['annivs']         = $this->model->get_anniversary_couple();
+            $data['weddings']    = $this->model->get_wedding();
+
+
+            $data['jobs']    = $this->model->get_jobs_vacancy();
+            $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
+            $data['events']         = $this->model->get_event();
+            $data['others']         = $this->model->get_others();
+
+            $data['jemaat']     = $this->model->get_jemaat_detail($id);
+
+            $this->template->display('jemaat',$data);
+
+            
+        }
+        
+        
+        
+        /*
+         * 
+         * ULANG TAHUN PERNIKAHAN
+         * 
+         */
+        function anniversary($id){
+            
+            $data['leftnews'] = $this->config->item('leftnews');
+            $data['rightnews'] = $this->config->item('rightnews');
+
+
+            $item_slider = $this->model->get_slider();
+            $next_item  = $this->model->next_item_slider($item_slider->slider_id);
+
+            $data['page']   = $this->model->get_page();
+
+            $data['headline'] = $this->model->get_first_sermon();
+            $data['slider']	 = $item_slider;
+            $data['sliders']	= $next_item;
+
+            $data['birthday']       = $this->getBirthday();
+            $data['annivs']         = $this->model->get_anniversary_couple();
+
+            $data['events']		 = $this->model->get_event();
+            $data['others']		 = $this->model->get_others();
+            
+            $data['anniv']              = $this->model->get_detail_anniv($id);
+
+            $this->template->display('anniv',$data);
+            
+        }
+        
+        
+        
+        /**
+         * birthdate start to end
+         */
+        function getBirthday(){
+            $current_month = date("m");
+            $all = $this->model->get_birthday();
+            
+
+            foreach($all AS $bd){
+                $bdate = date("d", strtotime($bd->dob));
+                $bmonth = date("m", strtotime($bd->dob));
+                //echo $bdate;
+                $lastweek = date('d', strtotime('last sunday'));
+                $thisweek = date('d', strtotime('next sunday'));
+                
+               //echo $bmonth;
+               if($bmonth == $current_month){
+                   
+                   if($bdate >= $lastweek){
+                       
+                       if($bdate <= $thisweek){
+                           
+                            $jemaats[] = $this->model->get_jemaat_bday($bd->id);
+                            
+                                        
+                       }
+                   
+                   }    
+
+                }
+
+            }
+            return $jemaats;
+   
+            
+        }
+        
+        
 }
