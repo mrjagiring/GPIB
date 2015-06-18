@@ -11,6 +11,7 @@ class Home extends CI_Controller {
                 $this->load->helper(array('html', 'file'));
                 $this->load->model('extractImage/extract_image_model', 'extract');
                 $this->load->model('home_model','model');
+                $this->load->model('search_model','search');
 	}
 	
 	public function index()
@@ -64,6 +65,8 @@ class Home extends CI_Controller {
 		
 	function page($id){
             
+                $data['rightnews'] = $this->config->item('rightnews');
+            
                 $current_month = date("m");
                 
                 //slider
@@ -98,12 +101,10 @@ class Home extends CI_Controller {
                 $current_month = date("m");
                 
                 //slider
-                $item_slider = $this->model->get_slider();
-                $next_item  = $this->model->next_item_slider($item_slider->slider_id);
-                $data['slider']     = $item_slider;
-                $data['sliders']    = $next_item;
                 
                 $data['page']   = $this->model->get_page();
+                
+                 $data['rightnews'] = $this->config->item('rightnews');
                 
                 //right event data
                 $data['birthday']   = $this->model->get_birthday($current_month);
@@ -130,10 +131,7 @@ class Home extends CI_Controller {
                 $current_month = date("m");
                 
                 //slider
-                $item_slider = $this->model->get_slider();
-                $next_item  = $this->model->next_item_slider($item_slider->slider_id);
-                $data['slider']     = $item_slider;
-                $data['sliders']    = $next_item;
+                 $data['rightnews'] = $this->config->item('rightnews');
                 
                 $data['page']   = $this->model->get_page();
                 
@@ -157,6 +155,46 @@ class Home extends CI_Controller {
                 
                 $this->template->display('gallery/detail',$data);
             
+            
+        }
+        
+        function search(){
+            
+            $data['rightnews'] = $this->config->item('rightnews');
+            $current_month = date("m");
+            
+            $term = $this->input->post('srch-term');
+            
+            
+            $data['page']   = $this->model->get_page();
+                
+            //right event data
+            $data['birthday']   = $this->model->get_birthday($current_month);
+            $data['annivs']     = $this->model->get_anniversary($current_month);
+            $data['weddings']    = $this->model->get_wedding();
+
+
+            $data['jobs']    = $this->model->get_jobs_vacancy();
+            $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
+            $data['events']         = $this->model->get_event();
+            $data['others']         = $this->model->get_others();
+
+            
+            
+            $searchberita = $this->search->getBerita($term);
+            $searchpage   = $this->search->getPageSearch($term);
+            $data['sberita'] = $searchberita;
+            $data['spage']   = $searchpage;
+            $data['term']   = $term;
+            
+            if(!$searchberita && !$searchpage){
+                
+                $this->template->display('search/zero_result',$data);
+            }
+            else{
+                
+                $this->template->display('search/result',$data);
+            }
             
         }
   
