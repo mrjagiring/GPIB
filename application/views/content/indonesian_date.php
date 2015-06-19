@@ -23,7 +23,7 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
     $replace = array ( 'Sen','Sel','Rab','Kam','Jum','Sab','Min',
         'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu',
         'Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des',
-        'Januari','Februari','Maret','April','Juni','Juli','Agustus','September',
+        'Januari','Februari','Maret','April','Juni','Juli','Agustus','Sepember',
         'Oktober','November','Desember',
     );
     $date = date ($date_format, $timestamp);

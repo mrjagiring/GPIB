@@ -25,19 +25,22 @@ class Nikah extends CI_Controller {
 
 	public function adding()
 	{
-		$data['f_name'] = $this->input->post("f_name");
-		$data['m_name'] = $this->input->post("f_name");
-		$data['l_name'] = $this->input->post("l_name");
-		$data['gender'] = $this->input->post("gender");
-		$data['dob'] = $this->input->post("dob");
-		$data['telp'] = $this->input->post("telp");
-		$data['alamat'] = $this->input->post("alamat");
+		$data['suami'] = $this->input->post("suami");
+		$data['istri'] = $this->input->post("istri");
+		$data['tempat'] = $this->input->post("tempat");
+		$data['tanggal'] = $this->input->post("tanggal");
+		$data['sipil'] = $this->input->post("sipil");
 		//print_r($data);
 
 		$isLogin = $this->session->userdata('logged_in');
 		if ($isLogin === TRUE) {
-			$result = $this->jemaat_model->addJemaat($data);
-			redirect('jemaat/listing');
+			$result = $this->nikah_model->addNikah($data);
+
+			$status['nikah'] = 1;
+			$suami = $this->jemaat_model->updateJemaat($data['suami'], $status);
+			$istri = $this->jemaat_model->updateJemaat($data['istri'], $status);
+
+			redirect('nikah/listing');
 		}
 		else
 		{
@@ -50,6 +53,12 @@ class Nikah extends CI_Controller {
 		$isAdmin = $this->session->userdata('is_admin');
 		$isLogin = $this->session->userdata('logged_in');
 		if($isLogin === TRUE && $isAdmin === TRUE){
+			$status['nikah'] = 0;
+			$data = $this->nikah_model->getNikah($id);
+
+			$suami = $this->jemaat_model->updateJemaat($data['suami'], $status);
+			$istri = $this->jemaat_model->updateJemaat($data['istri'], $status);
+
 			$result = $this->nikah_model->deleteNikah($id);
 			redirect('nikah/listing');
 		}
@@ -86,7 +95,7 @@ class Nikah extends CI_Controller {
 			<script src="'.base_url().'assets/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
 			<script type="text/javascript">
 		      $(function () {
-		        $("#listJemaat").dataTable({
+		        $("#listNikah").dataTable({
 		        	"bLengthChange": false,"bSort": false,"bAutoWidth": false,"bInfo": true
 		        });
 		      });
@@ -127,20 +136,27 @@ class Nikah extends CI_Controller {
 
 	public function updating()
 	{
-		$data['f_name'] = $this->input->post("f_name");
-		$data['m_name'] = $this->input->post("f_name");
-		$data['l_name'] = $this->input->post("l_name");
-		$data['gender'] = $this->input->post("gender");
-		$data['dob'] = $this->input->post("dob");
-		$data['telp'] = $this->input->post("telp");
-		$data['alamat'] = $this->input->post("alamat");
+		$data['suami'] = $this->input->post("suami");
+		$data['istri'] = $this->input->post("istri");
+		$data['tempat'] = $this->input->post("tempat");
+		$data['tanggal'] = $this->input->post("tanggal");
+		$data['sipil'] = $this->input->post("sipil");
 		$id = $this->input->post("id");
 		//print_r($data);
 
 		$isLogin = $this->session->userdata('logged_in');
 		if ($isLogin === TRUE) {
+			$status['nikah'] = 0;
+			$dataN = $this->nikah_model->getNikah($id);
+			$suami = $this->jemaat_model->updateJemaat($dataN['suami'], $status);
+			$istri = $this->jemaat_model->updateJemaat($dataN['istri'], $status);
+
 			$result = $this->nikah_model->updateNikah($id, $data);
-			redirect('jemaat/listing');
+			$status['nikah'] = 1;
+			$suami = $this->jemaat_model->updateJemaat($data['suami'], $status);
+			$istri = $this->jemaat_model->updateJemaat($data['istri'], $status);
+
+			redirect('nikah/listing');
 		}
 		else
 		{

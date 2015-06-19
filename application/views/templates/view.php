@@ -132,17 +132,10 @@
                 <div class="col-lg-12 paddingless">
                     <div class="col-lg-5 bottom-event">
                         <h3>kegiatan penting minggu ini</h3>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <ul>
-                                <?php foreach($events AS $ev) :?>
-                                <li><?php echo anchor('home/berita/'.$ev->slug, $ev->title) ;?></li>
-                                <?php endforeach ?>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul>
-                                <?php foreach($others AS $other) :?>
-                                    <li><?php echo anchor('home/berita/'.$other->slug, $other->title);?></li>
+                                <?php foreach($kegiatans AS $key => $value) :?>
+                                <li><?php echo anchor('home/kegiatan/'.$value[0]->id, $value[0]->kegiatan) ;?></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>

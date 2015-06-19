@@ -9,6 +9,8 @@ Class Home_model extends CI_Model
         var $slider = 'tbl_slider';
         var $user   = 'tbl_users';
         var $pg     = 'tbl_page';
+        var $sbu    = 'tbl_sbu';
+        var $keg    = 'tbl_kegiatan';
     
 	function __constuct()
 	{
@@ -88,32 +90,41 @@ Class Home_model extends CI_Model
             return $query->result();
             
         }
+        /*
+         * SBU
+         */
         
-        
-        function get_first_sermon(){
+        function get_last_sbu(){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where_in('cat_id', array(12,13));
+            $this->db->order_by('id','desc');
             $this->db->limit(1);
             
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->sbu);
             
             return $query->row();
             
         }
         
-        function get_sermon_after($id){
+        function get_sbu_before($id){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
             $this->db->where('id !=', $id);
-            $this->db->where_in('cat_id', array(12,13));
             $this->db->limit(3);
             
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->sbu);
             
             return $query->result();
+        }
+        
+        
+        function get_detail_sbu($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->sbu);
+            
+            return $query->row();
+            
         }
         /*
          *Birthday
@@ -242,32 +253,44 @@ Class Home_model extends CI_Model
             
         }
         
-        function get_event(){
+        /*
+         * 
+         * Kegiatan Minggu Ini
+         */
+        function get_all_kegiatan(){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where('cat_id', 15);
-            $this->db->limit(6);
-            
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->keg);
             
             return $query->result();
             
         }
         
-        function get_others(){
+        function get_kegiatan_sepekan($id){
             
-            $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where('cat_id', 16);
-            $this->db->limit(6);
+            $this->db->where_in('id',$id);
+            $this->db->order_by('id','asc');
+            $query = $this->db->get($this->keg);
             
-            $query = $this->db->get($this->berita);
             
             return $query->result();
             
         }
         
+        function get_detail_kegiatan($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->keg);
+            
+            return $query->row();
+            
+        }
+        
+        /***
+         * 
+         * SLIDER
+         * 
+         */
         function get_slider(){
             
             $this->db->order_by('created_at','desc');

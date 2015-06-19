@@ -38,4 +38,11 @@ Class Nikah_model extends CI_Model
 		$row = $query->row_array();
 		return $row;
 	}
+
+	function getPengantin($gender)
+	{
+		$query = $this->db->where(array('gender' => $gender, 'nikah !=' => 1))->get('tbl_jemaat');//$this->db->get_where('tbl_jemaat', array('gender' => $gender));
+		$row = $query->result();
+		return $row;
+	}
 }

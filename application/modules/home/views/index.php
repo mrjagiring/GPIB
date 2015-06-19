@@ -104,29 +104,24 @@
                 <?php echo form_close() ;?>
             </div>
             <img src="http://placehold.it/240x320"/>
-            <div class="category">Sermon</div>
+            <div class="category">SBU</div>
             <div class="title-div">
-                <h3><?php echo $headline->title ;?></h3>
+                <h3><?php echo $sbu->judul ;?></h3>
                 <div class="clearfix"></div>
-                <div class="author">Paul Amstrong / Aug 11, 2013 / Life issues</div>
+                <div class="author"><?php echo indonesian_date($sbu->tanggal, "l, j F Y").' / '.$sbu->nats .' / SBU '.$sbu->kategori ;?></div>
             </div>
             <div class="headline">
             <p>
-                <?php echo html_entity_decode($headline->desk) ;?>
+                <?php echo html_entity_decode($sbu->desk) ;?>
             </p>
             </div>
-
-            Sabda Bina Umat: Renungan SBU Pagi 2015
-            <br />
-            <?php echo indonesian_date($headline->create_at, "l, j F Y") ;?>
-            <div class="clearfix"></div>
             <div class="related-news">
-                <?php $relateds = $this->model->get_sermon_after($headline->id);?>
+                <?php $relateds = $this->model->get_sbu_before($sbu->id);?>
                 <?php foreach($relateds AS $related) :?>
                 <div class="item">
-                    <div class="title"><?php echo $related->title ;?></div>
-                    <div class="perikop">Efesus 4:17-24</div>
-                    <p><?php echo character_limiter($related->desk, 140) ;?><?php echo anchor('home/berita/'.$related->slug, 'baca selengkapnya');?></p>
+                    <div class="title"><?php echo $related->judul ;?></div>
+                    <div class="perikop"><?php echo $related->nats ;?></div>
+                    <p><?php echo character_limiter($related->desk, 140) ;?><?php echo anchor('home/sbu/'.$related->id, 'baca selengkapnya');?></p>
                 </div>
                 <?php endforeach ?>
             </div>

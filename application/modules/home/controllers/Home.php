@@ -30,15 +30,17 @@ class Home extends CI_Controller {
 				
 		$data['page']   = $this->model->get_page();
 				
-		$data['headline'] = $this->model->get_first_sermon();
+		$data['sbu'] = $this->model->get_last_sbu();
+                
+                
+                
 		$data['slider']	 = $item_slider;
 		$data['sliders']	= $next_item;
 
 		$data['birthday']       = $this->getBirthday();
 		$data['annivs']         = $this->model->get_anniversary_couple();
 
-		$data['events']		 = $this->model->get_event();
-		$data['others']		 = $this->model->get_others();
+		$data['kegiatans']      = $this->getKegiatan();       
 				
 		$this->template->display('index',$data);
 	}
@@ -52,19 +54,12 @@ class Home extends CI_Controller {
                 $data['rightnews'] = $this->config->item('rightnews');
 			
 		//slider
-		$item_slider          = $this->model->get_slider();
-		$next_item            = $this->model->next_item_slider($item_slider->slider_id);
-		$data['slider']       = $item_slider;
-		$data['sliders']      = $next_item;
-			
-		$data['page']         = $this->model->get_page();
-			
-		//right event data
-		$data['birthday']     = $this->getBirthday();
-		$data['annivs']         = $this->model->get_anniversary_couple();
+		$data['page']   = $this->model->get_page();
 
-		$data['events']       = $this->model->get_event();
-		$data['others']       = $this->model->get_others();
+                $data['birthday']       = $this->getBirthday();
+                $data['annivs']         = $this->model->get_anniversary_couple();
+
+                $data['kegiatans']      = $this->getKegiatan();
 				
 		//detail post
 		$data['post']         = $this->model->getBySlug($slug);
@@ -80,24 +75,13 @@ class Home extends CI_Controller {
             
                 $data['rightnews'] = $this->config->item('rightnews');
                             
-                //slider
-                $item_slider = $this->model->get_slider();
-                $next_item  = $this->model->next_item_slider($item_slider->slider_id);
-                $data['slider']     = $item_slider;
-                $data['sliders']    = $next_item;
-                
+
                 $data['page']   = $this->model->get_page();
-                
-                //right event data
-                $data['birthday']     = $this->getBirthday();
-		$data['annivs']         = $this->model->get_anniversary_couple();
-                $data['weddings']    = $this->model->get_wedding();
-                
-                
-                $data['jobs']    = $this->model->get_jobs_vacancy();
-                $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
-                $data['events']         = $this->model->get_event();
-                $data['others']         = $this->model->get_others();
+
+                $data['birthday']       = $this->getBirthday();
+                $data['annivs']         = $this->model->get_anniversary_couple();
+
+                $data['kegiatans']      = $this->getKegiatan();
                 
                 //detail post
                 $data['detail']       = $this->model->get_detail_page($id);
@@ -119,16 +103,12 @@ class Home extends CI_Controller {
                 
                  $data['rightnews'] = $this->config->item('rightnews');
                 
-                //right event data
-                $data['birthday']     = $this->getBirthday();
-		$data['annivs']         = $this->model->get_anniversary_couple();
-                $data['weddings']    = $this->model->get_wedding();
-                
-                
-                $data['jobs']    = $this->model->get_jobs_vacancy();
-                $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
-                $data['events']         = $this->model->get_event();
-                $data['others']         = $this->model->get_others();
+                $data['page']   = $this->model->get_page();
+
+                $data['birthday']       = $this->getBirthday();
+                $data['annivs']         = $this->model->get_anniversary_couple();
+
+                $data['kegiatans']      = $this->getKegiatan();
                 
                 //detail post
                 $this->load->helper('directory');
@@ -146,16 +126,12 @@ class Home extends CI_Controller {
                 
                 $data['page']   = $this->model->get_page();
                 
-                //right event data
-                $data['birthday']     = $this->getBirthday();
-		$data['annivs']         = $this->model->get_anniversary_couple();
-                $data['weddings']    = $this->model->get_wedding();
-                
-                
-                $data['jobs']    = $this->model->get_jobs_vacancy();
-                $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
-                $data['events']         = $this->model->get_event();
-                $data['others']         = $this->model->get_others();
+                $data['page']   = $this->model->get_page();
+
+                $data['birthday']       = $this->getBirthday();
+                $data['annivs']         = $this->model->get_anniversary_couple();
+
+                $data['kegiatans']      = $this->getKegiatan();
                 
                 //detail post
                 $this->load->helper('directory');
@@ -184,18 +160,11 @@ class Home extends CI_Controller {
             
             
             $data['page']   = $this->model->get_page();
-                
-            //right event data
-            $data['birthday']     = $this->getBirthday();
+
+            $data['birthday']       = $this->getBirthday();
             $data['annivs']         = $this->model->get_anniversary_couple();
-            $data['weddings']    = $this->model->get_wedding();
 
-
-            $data['jobs']    = $this->model->get_jobs_vacancy();
-            $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
-            $data['events']         = $this->model->get_event();
-            $data['others']         = $this->model->get_others();
-
+            $data['kegiatans']      = $this->getKegiatan();
             
             
             $searchberita = $this->search->getBerita($term);
@@ -219,23 +188,17 @@ class Home extends CI_Controller {
          * JEMAAT
          */
         function jemaat($id){
-                
-            //slider
 
-            $data['page']   = $this->model->get_page();
 
-             $data['rightnews'] = $this->config->item('rightnews');
+            $data['rightnews'] = $this->config->item('rightnews');
 
             //right event data
-            $data['birthday']   = $this->getBirthday();
+            $data['page']   = $this->model->get_page();
+
+            $data['birthday']       = $this->getBirthday();
             $data['annivs']         = $this->model->get_anniversary_couple();
-            $data['weddings']    = $this->model->get_wedding();
 
-
-            $data['jobs']    = $this->model->get_jobs_vacancy();
-            $data['jemaatsakit']    = $this->model->get_jemaat_sakit();
-            $data['events']         = $this->model->get_event();
-            $data['others']         = $this->model->get_others();
+            $data['kegiatans']      = $this->getKegiatan();
 
             $data['jemaat']     = $this->model->get_jemaat_detail($id);
 
@@ -257,32 +220,74 @@ class Home extends CI_Controller {
             $data['rightnews'] = $this->config->item('rightnews');
 
 
-            $item_slider = $this->model->get_slider();
-            $next_item  = $this->model->next_item_slider($item_slider->slider_id);
-
             $data['page']   = $this->model->get_page();
-
-            $data['headline'] = $this->model->get_first_sermon();
-            $data['slider']	 = $item_slider;
-            $data['sliders']	= $next_item;
 
             $data['birthday']       = $this->getBirthday();
             $data['annivs']         = $this->model->get_anniversary_couple();
 
-            $data['events']		 = $this->model->get_event();
-            $data['others']		 = $this->model->get_others();
+            $data['kegiatans']      = $this->getKegiatan();
             
             $data['anniv']              = $this->model->get_detail_anniv($id);
 
             $this->template->display('anniv',$data);
             
         }
+
+        /*
+         * SBU
+         * 
+         */
+        function sbu($id){
+            
+            $data['leftnews'] = $this->config->item('leftnews');
+            $data['rightnews'] = $this->config->item('rightnews');
+
+
+            $data['page']   = $this->model->get_page();
+
+            $data['birthday']       = $this->getBirthday();
+            $data['annivs']         = $this->model->get_anniversary_couple();
+
+            $data['kegiatans']      = $this->getKegiatan();
+            
+            $data['detail']     = $this->model->get_detail_sbu($id);
+            
+
+            $this->template->display('sbu',$data);
+            
+            
+        }
         
-        
+        /***
+         * 
+         * 
+         * Kegiatan
+         * 
+         */
+        function kegiatan($id){
+            
+            $data['leftnews'] = $this->config->item('leftnews');
+            $data['rightnews'] = $this->config->item('rightnews');
+
+
+            $data['page']   = $this->model->get_page();
+
+            $data['birthday']       = $this->getBirthday();
+            $data['annivs']         = $this->model->get_anniversary_couple();
+
+            $data['kegiatans']      = $this->getKegiatan();
+            
+            $data['detail']     = $this->model->get_detail_kegiatan($id);
+            
+            $this->template->display('kegiatan',$data);
+            
+        }
         
         /**
          * birthdate start to end
          */
+        
+        
         function getBirthday(){
             $current_month = date("m");
             $all = $this->model->get_birthday();
@@ -314,6 +319,39 @@ class Home extends CI_Controller {
             }
             return $jemaats;
    
+            
+        }
+        
+        function getKegiatan(){
+            
+            $current_month = date("m");
+            $all = $this->model->get_all_kegiatan();
+            
+             foreach($all AS $row){
+                $tanggal = date("d", strtotime($row->tanggal));
+                $bulan = date("m", strtotime($row->tanggal));
+                //echo $bdate;
+                $lastweek = date('d', strtotime('last sunday'));
+                $thisweek = date('d', strtotime('next sunday'));
+                
+               //echo $bmonth;
+               if($bulan == $current_month){
+                   
+                   if($tanggal >= $lastweek){
+                       
+                       if($tanggal <= $thisweek){
+                           
+                            $kegiatans[] = $this->model->get_kegiatan_sepekan($row->id);
+                            
+                                        
+                       }
+                   
+                   }    
+
+                }
+
+            }
+            return $kegiatans;
             
         }
         
