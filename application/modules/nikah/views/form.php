@@ -21,33 +21,19 @@
 	                </div><!-- /.box-header -->
 	                <div class="box-body">
 	                <?php $data = $this->nikah_model->getNikah($id);
-	                	$pLK = $this->jemaat_model->getJemaat(@$data['suami']);
-	                	$pPR = $this->jemaat_model->getJemaat(@$data['istri']);
 						$attForm = array("id" => "addform", "name" => "addform");
-						if ($id==0) {echo form_open("nikah/adding", $attForm);}
-						else {echo form_open("nikah/updating", $attForm);}
+						if ($id==0) {echo form_open("jemaat/adding", $attForm);}
+						else {echo form_open("jemaat/updating", $attForm);}
 					?>
 						<div class="form-group">
 							<label>Nama Suami</label>
-							<select class="form-control" id="suami" name="suami">
-								<option <?php if ($pLK['id'] == @$data['suami'] ) echo 'selected'; ?> value="<?php echo $pLK['id']; ?>"><?php echo $pLK['f_name'] . ' ' . $pLK['m_name'] . ' ' . $pLK['l_name']; ?></option>
-								<?php $lajang = $this->nikah_model->getPengantin('LK'); ?>
-								<?php foreach($lajang as $pLK) { ?>
-								<option value="<?php echo $pLK->id; ?>"><?php echo $pLK->f_name .' '. $pLK->m_name .' '. $pLK->l_name; ?></option>
-								<?php }  ?>
-							</select>
+							<input type="text" class="form-control" name="suami" value="<?php echo @$data['suami']; ?>"/>
 							<a class="btn btn-success" href="<?php echo base_url(); ?>jemaat/form/0"><i class="fa fa-plus"></i> Tambah Anggota Jemaat</a>
 						</div>
 
 						<div class="form-group">
 							<label>Nama Istri</label>
-							<select class="form-control" id="istri" name="istri">
-								<option <?php if ($pPR['id'] == @$data['istri'] ) echo 'selected'; ?> value="<?php echo $pPR['id']; ?>"><?php echo $pPR['f_name'] . ' ' . $pPR['m_name'] . ' ' . $pPR['l_name']; ?></option>
-								<?php //$lajang = $this->nikah_model->getPengantin('PR'); ?>
-								<?php foreach($this->nikah_model->getPengantin('PR') as $pPR) { ?>
-								<option value="<?php echo $pPR->id; ?>"><?php echo $pPR->f_name .' '. $pPR->m_name .' '. $pPR->l_name; ?></option>
-								<?php }  ?>
-							</select>
+							<input type="text" class="form-control" name="istri" value="<?php echo @$data['istri']; ?>"/>
 							<a class="btn btn-success" href="<?php echo base_url(); ?>jemaat/form/0"><i class="fa fa-plus"></i> Tambah Anggota Jemaat</a>
 						</div>
 
