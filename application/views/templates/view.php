@@ -69,100 +69,38 @@
                              </nav>
                     </div>
                 </div>
-                
-                <!-- Slider Goes Here -->
-                <div class="row">
-                    <div class="col-lg-12 paddingless">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden">
-                          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                          
-                          
-                          <?php $i=1;?>
-                          <?php foreach($slider AS $rwslide) :?>
-                          <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i++ ;?>"></li>
-                          <?php endforeach ?>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner custom-carousel" role="listbox">
-                          <div class="item active">
-                            <img src="<?php echo base_url() ;?>uploads/gallery/<?php echo $slider->slider_path.'/'.$slider->slider_img ;?>" alt="slider <?php echo $slider->slider_id ;?>" class="img-responsive">
-                            <div class="carousel-caption">
-                                <h3><?php echo $slider->slider_title ;?></h3>
-                                <p><?php echo $slider->slider_caption ;?></p>
-                            </div>
-                          </div>
-                            
-                          <?php foreach($sliders AS $rwslide) :?>  
-                          <div class="item">
-                             <img src="<?php echo base_url() ;?>uploads/gallery/<?php echo $rwslide->slider_path.'/'.$rwslide->slider_img ;?>" alt="slider <?php echo $rwslide->slider_id ;?>" class="img-responsive">
-                            <div class="carousel-caption">
-                                <div class="layer-out">
-                                    <h3><?php echo $rwslide->slider_title ;?></h3>
-                                </div>
-                                
-                               <p><?php echo $rwslide->slider_caption ;?></p>
-                            </div>
-                          </div>
-                          <?php endforeach;?>  
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                    </div>    
-                </div>
-                
-                <div class="clearfix"></div>
-                
-                <div class="row">
-                    <div class="col-lg-12 marquee">
-                        <?php foreach ($birthday AS $bd) :?>
-                            <?php echo 'Selamat Ulang Tahun Kepada: '.  $bd->f_name.' '.$bd->l_name ;?> ,-
-                            <?php endforeach ;?>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
                
                 <?php $this->load->view($content_template) ;?>
 
                 <div class="col-md-3 ">
+                    <?php if($birthday){ ?>
                     <h4>SELAMAT ULANG TAHUN</h4>
                     <div class="border-red"></div>
                     <div class="border-grey"></div>
                     <div class="clearfix"></div>
                     <div class="right-event">
                         <ul>
-                            <?php foreach($birthday AS $bd) :?>
-                            <li><?php echo anchor('home/jemaat/'.$bd->id, $bd->f_name.' '.$bd->l_name) ;?></li>
+                            <?php foreach($birthday AS $key => $value) :?>
+                            <li><?php echo anchor('home/jemaat/'.$value[0]->id, $value[0]->f_name. ' '.$value[0]->l_name) ;?></li>
                             <?php endforeach ;?>
                         </ul>
                     </div>
-                        
+                    <?php }?>
                     <h4>SELAMAT ULANG TAHUN PERKAWINAN</h4>
                     <div class="border-red"></div>
                     <div class="border-grey"></div>
                     <div class="clearfix"></div>
                     <div class="right-event">
                         <ul>
-                            <?php foreach($annivs AS $anniv) :?>
-                                <?php $suami = $this->jemaat->getJemaat($anniv->suami);?>
-                                <?php $istri = $this->jemaat->getJemaat($anniv->istri);?>
-                                <li><?php echo anchor('home/jemaat/'.$anniv->id, $suami['f_name'] .' '. $suami['l_name'] .' & '. $istri['f_name'].' '. $istri['l_name']) ;?></li>
+                            <?php foreach($annivs AS $ann) :?>
+                                <?php $this->load->model('home_model');?>
+                                <?php $suami = $this->home_model->get_jemaat_detail($ann->suami);?>
+                                <?php $istri = $this->home_model->get_jemaat_detail($ann->istri);?>
+                                <li><?php echo anchor('home/anniversary/'.$ann->id, $suami->f_name.' '.$suami->l_name. ' & '.$istri->f_name.' '.$istri->l_name) ;?></li>
                             <?php endforeach;?>
+                            
                         </ul>
-                    </div>
-
+                    </div> 
                     <?php foreach ($rightnews as $parent => $rn){
                     $name = $rn['name'];
                     $limit = $rn['limit'];
@@ -194,17 +132,10 @@
                 <div class="col-lg-12 paddingless">
                     <div class="col-lg-5 bottom-event">
                         <h3>kegiatan penting minggu ini</h3>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <ul>
-                                <?php foreach($events AS $ev) :?>
-                                <li><?php echo anchor('home/berita/'.$ev->slug, $ev->title) ;?></li>
-                                <?php endforeach ?>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul>
-                                <?php foreach($others AS $other) :?>
-                                    <li><?php echo anchor('home/berita/'.$other->slug, $other->title);?></li>
+                                <?php foreach($kegiatans AS $key => $value) :?>
+                                <li><?php echo anchor('home/kegiatan/'.$value[0]->id, $value[0]->kegiatan) ;?></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>

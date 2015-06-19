@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2015 at 09:09 AM
+-- Generation Time: Jun 17, 2015 at 09:18 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -139,11 +139,11 @@ CREATE TABLE IF NOT EXISTS `tbl_jemaat` (
 --
 
 INSERT INTO `tbl_jemaat` (`id`, `f_name`, `m_name`, `l_name`, `gender`, `dob`, `nikah`, `telp`, `alamat`) VALUES
-(1, 'AKWILA ', 'REKKY PETRUS ', 'DAMANIK', 'LK', '1982-03-23', 1, '0761-36171', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
-(2, 'ROMAULI', '', '', 'PR', '0000-00-00', 1, '', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
+(1, 'AKWILA ', 'REKKY PETRUS ', 'DAMANIK', 'LK', '1982-03-23', 0, '0761-36171', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
+(2, 'ROMAULI', '', '', 'PR', '0000-00-00', 0, '', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
 (3, 'KEREN ', 'PRISKILA', 'DAMANIK', 'PR', '2012-12-29', 0, '', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
-(4, 'ABEL ', 'ROLAND ', 'GULTOM', 'LK', '1972-09-08', 1, '0761-28123', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
-(5, 'YULYATI', 'CHRISTIAN', 'ARUAN', 'PR', '1971-07-31', 1, '', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
+(4, 'ABEL ', 'ROLAND ', 'GULTOM', 'LK', '1972-09-08', 0, '0761-28123', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
+(5, 'YULYATI', 'CHRISTIAN', 'ARUAN', 'PR', '1971-07-31', 0, '', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
 (6, 'MATTHEW P. C', 'NATHANEL', 'GULTOM', 'LK', '2000-06-12', 0, '', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
 (7, 'DAVID', 'CLEO', 'GULTOM', 'LK', '2003-01-29', 0, '', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
 (8, 'TIMOTHY', 'CLEYTUS', 'GULTOM', 'LK', '2003-01-29', 0, '', 'JL. ABABIL NIO. 15A  SUKAJADI KAMPUNG MELAYU'),
@@ -155,8 +155,8 @@ INSERT INTO `tbl_jemaat` (`id`, `f_name`, `m_name`, `l_name`, `gender`, `dob`, `
 (14, 'ANDREW ', 'RIGGS WILSON ', 'DAMANIK', 'LK', '1978-02-12', 0, '0761-36171', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
 (15, 'RIO', 'MARLINA ', 'PANJAITAN', 'PR', '0000-00-00', 0, '', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
 (16, 'ANUGERAH', 'PASKAH', 'DAMANIK', 'LK', '0000-00-00', 0, '', 'JL. BUNGA HARUM NO. 4  SUKAJADI HARJOSARI'),
-(17, 'APREDING ', '', 'TANDIRURA', 'LK', '1972-11-28', 1, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
-(18, 'ERNY ', 'SOFICE TULLE', '', 'PR', '1980-05-02', 1, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
+(17, 'APREDING ', '', 'TANDIRURA', 'LK', '1972-11-28', 0, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
+(18, 'ERNY ', 'SOFICE TULLE', '', 'PR', '1980-05-02', 0, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
 (19, 'JERREMY . A', '', 'TANDIRURA', 'LK', '2001-05-24', 0, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
 (20, 'SAHRANY C.F', '', 'TANDIRURA', 'PR', '2005-02-27', 0, '', 'ASRAMA BRIMOB BLOK F NO. 3 SUKAJADI -KAMPUNG MELAYU'),
 (21, 'BUDHI ', 'PRASETYO ', 'KORENGKENG', 'LK', '1973-10-11', 0, '0761-46459', 'JL. DURIAN NO. 3  SUKAJADI JADIREJO'),
@@ -205,8 +205,8 @@ INSERT INTO `tbl_jemaat` (`id`, `f_name`, `m_name`, `l_name`, `gender`, `dob`, `
 (64, 'JERRY', 'MEDIANTO', 'SINURAYA', 'LK', '1970-07-05', 0, '', 'JL. MELUR UJUNG/NENAS NO. 6B  SENAPELAN PADANG TERUBUK'),
 (65, 'YUNIARTO', '', 'SINURAYA', 'LK', '1971-07-26', 0, '', 'JL. MELUR UJUNG/NENAS NO. 6B  SENAPELAN PADANG TERUBUK'),
 (66, 'YAN ', 'MANNA PUTRA', 'SINURAYA', 'LK', '0000-00-00', 0, '', 'JL. MELUR UJUNG/NENAS NO. 6B  SENAPELAN PADANG TERUBUK'),
-(67, 'MANAOR ', '', 'SIAHAAN', 'LK', '1939-08-19', 1, '0761-22442', 'JL. PEPAYA NO. 13  SUKAJADI PULO KARAM'),
-(68, 'TIORIA', '', 'SIANIPAR', 'PR', '1945-08-17', 1, '', 'JL. PEPAYA NO. 13  SUKAJADI PULO KARAM'),
+(67, 'MANAOR ', '', 'SIAHAAN', 'LK', '1939-08-19', 0, '0761-22442', 'JL. PEPAYA NO. 13  SUKAJADI PULO KARAM'),
+(68, 'TIORIA', '', 'SIANIPAR', 'PR', '1945-08-17', 0, '', 'JL. PEPAYA NO. 13  SUKAJADI PULO KARAM'),
 (69, 'MANGAPUL ', '', 'NAINGGOLAN', 'LK', '1978-05-12', 0, '', 'JL. RUSA NO. 14  SUKAJADI HARJOSARI'),
 (70, 'DEBY', 'NURSANTI', 'MANALU', 'PR', '1980-03-20', 0, '', 'JL. RUSA NO. 14  SUKAJADI HARJOSARI'),
 (71, 'DESY', 'KANIA', 'NAINGGOLAN', 'PR', '2005-12-01', 0, '', 'JL. RUSA NO. 14  SUKAJADI HARJOSARI'),
@@ -234,8 +234,8 @@ INSERT INTO `tbl_jemaat` (`id`, `f_name`, `m_name`, `l_name`, `gender`, `dob`, `
 (93, 'DAMERIA', '', '', 'PR', '1972-06-13', 0, '', 'JL. KAMBOJA GG. PURA CENDANA NO. 17  SUKAJADI SUKAJADI'),
 (94, 'NATALIA', '', '', 'PR', '1995-12-09', 0, '', 'JL. KAMBOJA GG. PURA CENDANA NO. 17  SUKAJADI SUKAJADI'),
 (95, 'MURNIATI ', '', 'HUTABARAT', 'PR', '1942-08-01', 0, '0761-47784', 'JL. KAMBOJA GG. PURA CENDANA NO. 17  SUKAJADI SUKAJADI'),
-(96, 'NIKOLAUS ', '', 'SINAY', 'LK', '1963-11-01', 1, '0761-848854', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
-(97, 'ESTERLINA ', 'ALENDALINA ', 'SINAY', 'PR', '1971-04-06', 1, '', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
+(96, 'NIKOLAUS ', '', 'SINAY', 'LK', '1963-11-01', 0, '0761-848854', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
+(97, 'ESTERLINA ', 'ALENDALINA ', 'SINAY', 'PR', '1971-04-06', 0, '', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
 (98, 'STANY', 'GRACE', 'SINAY', 'PR', '1989-10-05', 0, '', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
 (99, 'FIORELLO', 'NEVAN', 'SINAY', 'LK', '2011-03-24', 0, '', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
 (100, 'ANNABELLE', 'SHARON', 'SINAY', 'PR', '2012-12-15', 0, '', 'JL. CEMPAKA GG. SURYA I NO. 28B  SUKAJADI SUKAJADI'),
@@ -310,57 +310,6 @@ INSERT INTO `tbl_jemaat` (`id`, `f_name`, `m_name`, `l_name`, `gender`, `dob`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_kegiatan`
---
-
-DROP TABLE IF EXISTS `tbl_kegiatan`;
-CREATE TABLE IF NOT EXISTS `tbl_kegiatan` (
-`id` int(11) NOT NULL,
-  `kegiatan` varchar(255) NOT NULL,
-  `tanggal` date NOT NULL DEFAULT '0000-00-00',
-  `pukul` varchar(5) NOT NULL,
-  `tempat` varchar(255) NOT NULL,
-  `pemimpin` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_kegiatan`
---
-
-INSERT INTO `tbl_kegiatan` (`id`, `kegiatan`, `tanggal`, `pukul`, `tempat`, `pemimpin`) VALUES
-(1, ' Ibadah Keluarga Sektor1a:Kel. Sumilat', '2015-06-17', '19:30', ' Jl. Cendrawasih 2    ', 'Dkn Ny. Rita Gunawan'),
-(2, ' Ibadah Keluarga Sektor1b:Kel. M.Pikarima', '2015-06-17', '19:30', '  Perum BKP Blok E 12 ', 'Pnt. W. Soempeno'),
-(3, ' Ibadah Keluarga Sektor2abc:Kel. J. Jacobs', '2015-06-17', '19:30', ' Jl. Johar II C/ 210 ', 'Dkn Ny.V. Simorangkir'),
-(4, ' Ibadah Keluarga Sektor2def:Kel. E.Matheus', '2015-06-17', '19:30', ' Jl. Randu Blok C ', 'Pnt. D.J. Rompis'),
-(5, ' Ibadah Keluarga Sektor3a:Kel.Ny.U.Hetharia', '2015-06-17', '19:30', '  Jl.Jkt timur II Blok D11/ 16 ', 'Dkn Y. Budiyono T.S'),
-(6, ' Ibadah Keluarga Sektor3b:Kel.B.Simanjuntak ', '2015-06-17', '19:30', ' Jl.Bekasi Permai BL - 28 ', 'Dkn Ny. L. Wenas'),
-(7, ' Ibadah Keluarga Sektor4a:Kel.Andi Sugiarto', '2015-06-17', '19:30', ' Jl. Mawar IX Blok D6 No 9 ', 'Pnt. S.B. Harahap'),
-(8, ' Ibadah Keluarga Sektor4b:Kel.E.Halauwet', '2015-06-17', '19:30', ' Jl. Ceria IV/17 Kp.Cerewed ', 'Dkn Ny. N. Rondonuwu'),
-(9, ' Ibadah Keluarga Sektor5a:Kel.Ny.J.Risakotta', '2015-06-17', '19:30', '  Jl.Anggrek No 72 Cerewed ', 'Dkn T. Pangaribuan'),
-(10, ' Ibadah Keluarga Sektor5b:Kel. Ny.E. M. Tehupeiory', '2015-06-17', '19:30', ' Jl.K.Timur B No 78 Blok A4 ', 'Pnt. J. Suripatty  '),
-(11, ' Ibadah Keluarga Sektor6a:Kel. Rocky Noya', '2015-06-17', '19:30', ' Villa Setia Mekar Blok B2/16 Dkn ', 'Ny. Y. Tumengkol'),
-(12, ' Ibadah Keluarga Sektor6b:Kel.F.Tuanakotta', '2015-06-17', '19:30', ' Pratama Residence Blok B/18 ', 'Pnt. Frans Dharmono'),
-(13, ' Ibadah Keluarga Sektor7:Kel. J.Hutapea', '2015-06-17', '19:30', ' Jl.Prambanan Raya C6/15    ', 'Dkn Ny. F. Matulapelwa'),
-(14, ' Ibadah Keluarga Sektor8:Kel. Ny.C.Balehendrik', '2015-06-17', '19:30', ' Jl. Cemara Baru I Raya No. 31    ', 'Pnt. Hendrik Natan'),
-(15, ' Ibadah Keluarga Sektor9:Kel. T.H.Sibarani', '2015-06-17', '19:30', ' Jl. Mawar II Blok M5 No 11 ', 'Pnt.N.L. Rorimpandey'),
-(16, ' Persiapan Ibadah Minggu Matius 13 : 24 - 30  Pembukaan', '2015-06-18', '19:00', ' Gedung Gereja ', 'Pnt. Rudy Kalumata'),
-(17, ' Persiapan Ibadah Keluarga Galatia 6 : 1 - 10', '2015-06-18', '19:00', ' Ruang Petrus ', 'Pdt. Ny. M.Silahooij M.Pd.K'),
-(18, ' Persiapan Ibadah Pelkat PKP Yohanes 15 : 6-8', '2015-06-18', '19:00', ' Ruang Daud ', 'Dkn Tonny Pangaribuan'),
-(19, ' Persiapan Ibadah Pelkat PKB Roma 7 : 7 - 12', '2015-06-18', '19:00', ' Ruang Debora ', 'Pnt. N.L. Rorimpandey'),
-(20, ' Persiapan Ibadah Pelkat GP 2 Korintus 8 : 1 - 5', '2015-06-18', '19:00', ' Ruang Paulus ', 'Pnt. Ny. M. Titarsole'),
-(21, ' Persiapan Operator Projektor', '2015-06-18', '19:30', ' Ruang Operator (Balkon)  ', 'Sdr. Yugo Suharno'),
-(22, ' Rapat PHMJ', '2015-06-18', '21:00', ' Ruang Paulus', ''),
-(23, ' Latihan PS. PKP', '2015-06-19', '14:00', 'Gedung Gereja', ''),
-(24, ' Ibadah Pelkat PKB Sektor1:Bpk O.Purba', '2015-06-19', '20:00', ' Perum BKP Blok DD No 3 ', 'Bpk Agus Sutarno'),
-(25, ' Ibadah Pelkat PKB Sektor2:Bpk W.Saiya', '2015-06-19', '20:00', ' Jl. Mawar II Blok B No 32 ', 'Bpk Victor Rompis'),
-(26, ' Ibadah Pelkat PKB Sektor 3 : Bpk Franca Wenas', '2015-06-19', '20:00', ' Jl.Bekasi Permai AF 4 No 4 ', 'Dkn'),
-(27, ' Ibadah Pelkat PKB Sektor8:Bpk E.Matiho', '2015-06-19', '20:00', ' Jl.Cendrawasih 3 / 72 ', 'Bpk H. Hasibuan'),
-(28, ' Ibadah Pelkat PKB Sektor9:Bpk R. Pakpahan', '2015-06-19', '20:00', ' Jl. Angsana II Blok D 2 No 13 ', 'Bpk Y.E.M.Masiki'),
-(29, 'PS GP', '2015-06-19', '20:00', 'Gedung Gereja', 'Pdt');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_nikah`
 --
 
@@ -372,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `tbl_nikah` (
   `tempat` varchar(255) NOT NULL,
   `tanggal` date NOT NULL DEFAULT '0000-00-00',
   `sipil` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_nikah`
@@ -380,10 +329,7 @@ CREATE TABLE IF NOT EXISTS `tbl_nikah` (
 
 INSERT INTO `tbl_nikah` (`id`, `suami`, `istri`, `tempat`, `tanggal`, `sipil`) VALUES
 (1, 1, 2, '', '2011-11-17', '2011-11-17'),
-(5, 4, 5, 'Pekanbaru', '1999-08-21', '1999-08-21'),
-(6, 17, 18, 'Pekanbaru', '1999-10-10', '2001-10-30'),
-(7, 96, 97, '', '1990-09-27', '2007-11-29'),
-(8, 67, 68, '', '1963-06-03', '0000-00-00');
+(2, 4, 5, '', '1999-08-21', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -414,34 +360,6 @@ INSERT INTO `tbl_page` (`id`, `parent_id`, `title`, `target`, `menu_title`, `con
 (2, 1, 'Visi Misi', 'page', 'visi-misi', '<h2 style=\\"font-style:italic;\\">VISI GPIB</h2>\\r\\n\\r\\n<p>&#39;GPIB menjadi gereja yang mewujudkan damai sejahtera bagi seluruh ciptaanNya&#39;</p>\\r\\n\\r\\n<p>&nbsp;</p>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">MISI GPIB</h2>\\r\\n\\r\\n<p>Menempatkan Tuhan Yesus Kristus, Juru Selamat manusia sebagai Kepala Gereja.&nbsp;</p>\\r\\n\\r\\n<p>Mewujudkan kehadiran GPIB yang membawa corak damai sejahtera Allah dan menjadi berkat di tengah - tengah masyarakat dan dunia.&nbsp;</p>\\r\\n\\r\\n<p>Membangun suatu Jemaat Misioner yang bertumbuh, dewasa dalam iman. Kehidupannya adalah teladan serta memberi kontribusi nyata bagi kemajuan gereja, masyarakat dan bangsa Indonesia dalam suatu semangat oikumenis dan Nasional.</p>\\r\\n\\r\\n<p>&nbsp;</p>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">MOTO GPIB&nbsp;</h2>\\r\\n\\r\\n<p>&#39;Dan orang akan datang dari timur dan barat dan dari utara dan selatan dan mereka duduk makan di dalam Kerajaan Allah&#39;. (Lukas 13 : 29)</p>\\r\\n', 0, '', '', 'page/visi-misi'),
 (3, 1, 'Sejarah', 'category', '4', '', 0, '', '', 'category/4'),
 (4, 1, 'Pemahaman Iman GPIB', 'page', '', '<h2 style=\\"font-style:italic;\\">I KESELAMATAN</h2>\\r\\n\\r\\n<p>KAMI MENGAKU,&nbsp;</p>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa Allah yang esa 1) dengan FirmanNya dalam kasihNya yang tiada tara telah memulai karya keselamatan bagi 2) alam semesta 3) sejak awal Penciptaan 4) dan setelah kejatuhan manusia dalam dosa 5). Allah meneruskan karyaNya untuk memelihara alam semesta dari derita dan maut 6). Karya keselamatan ini berlangsung sampai pada akhir zaman 7).&nbsp;</li>\\r\\n	<li>Bahwa Yesus Kristus 1) telah mati, bangkit dan naik ke surga 2) menjamin keselamatan orang percaya dan membeba-skannya dari kuasa dosa 3), derita dan maut 4). Dengan demikian relasi manusia dengan Allah dan relasi manusia dengan sesama ciptaan-Nya telah dipulihkan. Hal itu akan senantiasa kami peringati melalui sakramen: Baptisan 5) dan Perjamuan 6).&nbsp;</li>\\r\\n	<li>Bahwa dalam 1) karya keselamatan iAllah telah memanggil 2) Abraham 3) menjadi umat Perjanjian Lama, juga Israel dari perhambaan di Mesir dan menyelamatkannya 4) dari kepunahan. Allah meneruskan 5) kasih setiaNya de-ngan melindungi dan menuntun umatNya kembali yang terserak dan tercerai berai di tanah pembuangan 6)&nbsp;</li>\\r\\n	<li>Bahwa dalam karya keselamatan melalui Yesus Kristus, Allah telah menyelamatkan dan menghimpun 1) umat Perjanjian Baru 2) yaitu Gereja 3) yang diutus-Nya untuk memberitakan Injil 4) dan menghadirkan tanda-tanda kerajaan Allah 5) di atas bumi.&nbsp;</li>\\r\\n	<li>Bahwa oleh kasihNya yang tiada tara 1), Allah telah mewujud nyatakan keselamatan itu sepenuhnya melalui pekerjaan Yesus Kristus 2). Supaya setiap orang yang percaya kepadaNya tidak binasa melainkan memperoleh hidup yang kekal 3).&nbsp;</li>\\r\\n	<li>Bahwa Yesus Kristus yang adalah Raja 1) dari segala raja dan Tuan dari segala tuan 2) akan menyatakan kepenuhan Keselamatan 3) pada saat Ia datang kembali kelak sebagai Hakim 4) dan Raja yang duduk disebelah kanan Allah Bapa yang Maha Kuasa.5)&nbsp;</li>\\r\\n	<li>Bahwa keselamatan yang dikerjakan Kristus terbuka bagi seluruh umat yang ada di muka bumi yang terdiri dari berbagai suku- bangsa. Dalam kasih-Nya yang tiada tara Allah mengaruniakan keselamatan, yakni: kemer-dekaan 1) kepada bangsa Indonesia. Sebagai bangsa yang dimerdekakan bertanggung jawab mengupayakan pembebasan dari ketidak adilan 2), perusakan alam 3) dan pelecehan hak asasi manusia 4), kemerosotan etis-moral 5) dan bentuk penindasan lainnya.&nbsp;</li>\\r\\n	<li>Bahwa melalui Roh Kudus, Allah menuntun 1) orang percaya mengakui 2) Yesus Kristus selaku Tuhan dan Juruslamat 3) dalam pergumulannya di dunia.&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">II - GEREJA</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa Allah Bapa telah memanggil dan menghimpun 1) dari antara bangsa - bangsa suatu umat 2) bagi Diri-Nya untuk menjadi berkat 3).&nbsp;</li>\\r\\n	<li>Bahwa panggilan itu dilanjutkan melalui Anak-Nya, yaitu Yesus yang adalah Tuhan 1). Dialah yang memanggil dan menjadi dasar 2) terbentuknya umat yang baru, yaitu Gereja 3).&nbsp;</li>\\r\\n	<li>Bahwa sepanjang sejarah dan di manapun di dunia, dari utara, selatan, barat dan timur, 1) orang-orang percaya dipanggil dan dituntun oleh Roh Kudus 2) untuk menjadi satu persekutuan 3) yang menjalankan tugas pelayanan, dan kesaksian 4).&nbsp;</li>\\r\\n	<li>Bahwa Yesus Kristus adalah Kepala Gereja 1) dan Gereja sebagai tubuh-Nya 2) yang rapi tersusun 3), dan segala sesuatu di dalamnya harus diselenggarakan secara tertib dan teratur 4).&nbsp;</li>\\r\\n	<li>Bahwa Gereja terpanggil untuk senantiasa menyata-kan keesaannya 1), supaya dunia percaya bahwa Allah Bapa telah mengutus Yesus Kristus 2), untuk menjalankan karya keselamatan bagi dunia 3) ini.&nbsp;</li>\\r\\n	<li>Bahwa keberadaan Gereja sebagai umat Allah terus menerus mengalami pembaharuan 1) bersama dan dengan seluruh ciptaan menyongsong penggenapan pemerintahan Allah .</li>\\r\\n	<li>Bahwa kendatipun Gereja terpanggil menghadirkan tanda-tanda Pemerintahan Allah 1), tetapi Gereja bukan Pemerintahan Allah itu sendiri 2).&nbsp;</li>\\r\\n	<li>Bahwa Gereja Protestan di Indonesia bagian Barat 1) bersama Gereja-Gereja lain adalah perwujudan dari Gereja Yesus Kristus 2) yang esa , kudus , am dan rasuli 3) yang berada dan berkarya di Indonesia yang beragam.&nbsp;</li>\\r\\n	<li>Bahwa Tuhan yang memanggil dan menetapkan para pelayan-Nya 1) sebagai Presbiter 2) yang berjalan bersama-sama 3) untuk memperlengkapi warga 4) GPIB yang missioner 5) sebagai manusia yang utuh.&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">III - MANUSIA&nbsp;</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa manusia 1): laki dan perempuan 2), diciptakan sepadan 3) oleh Allah menurut rupa dan gambar-Nya 4).&nbsp;</li>\\r\\n	<li>Bahwa manusia diciptakan Allah sebagai mahluk religius 1) dan makhluk sosial 2) yang diberikan kemampuan 3) untuk membangun relasi secara positif dengan sesamanya demi kebersamaan dan kesejahteraan seluruh ciptaan-Nya.&nbsp;</li>\\r\\n	<li>Bahwa manusia laki-laki dan perempuan disatukan dalam pernikahan 1) untuk saling mengasihi dan melengkapi 4).&nbsp;</li>\\r\\n	<li>Bahwa manusia bertanggung-jawab untuk bekerja 1) dalam rangka memelihara dan melestarikan, 2) alam. Untuk menunaikan tugas yang mulia ini manusia maupun struktur masyarakatnya tidak boleh disanjung dan dipuja 3).&nbsp;</li>\\r\\n	<li>Bahwa manusia diberi kemampuan dan wewenang menata-layani alam 1) berserta isinya; kemampuan dan wewenang ini dilaksanakannnya dalam keseimbangan di antara kebebasan dan tanggung-jawab 2), dan di antara hak dan kewajiban 3).&nbsp;</li>\\r\\n	<li>Bahwa karena keinginannya manusia 1) menyalahgunakan kuasa 2) dan tanggung-jawabnya, sehingga ia jatuh dalam dosa 3) menyebabkan rusaknya hubungan 4) dengan Allah, sesama dan alam.&nbsp;</li>\\r\\n	<li>Bahwa manusia memerlukan anugerah pembaruan 1), agar dapat melanjutkan pekerjaanNya hingga pemenuhan kerajaan Allah 2).&nbsp;</li>\\r\\n	<li>Bahwa hanya oleh kemurahan Allah 1) melalui Yesus Kristus dan di dalam persekutuan 2) dengan Roh Kudus, martabat manusia sebagai gambar Allah 3) dipulihkan kembali, sehingga ia dapat menghayati dan menikmati hidup kekal 4) dalam kehidupan yang sekarang ini maupun dalam kehidupan yang akan datang.&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">IV - ALAM DAN SUMBER DAYA&nbsp;</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa Allah menciptakan alam dan sumber daya-nya 1). Allah mempercayakan pengelolaannya kepada negara 2) dengan penuh tanggung jawab 3) demi kesejahteraan 4) manusia dan kelangsungan hidup sesama ciptaanNya.&nbsp;</li>\\r\\n	<li>Bahwa kekuatan-kekuatan alam 1) yang kelihatan dan yang tidak kelihatan, takluk pada kuasa Allah dan karena itu alam tidak boleh disembah 2).&nbsp;</li>\\r\\n	<li>Bahwa alam dan sumber dayanya telah dipulihkan oleh Yesus Kristus 1). Karena itu manusia yang telah didamaikan dan dipulihkan, wajib memelihara alam dan sumber dayanya dengan penuh perhatian dan rasa tanggung jawab&nbsp;</li>\\r\\n	<li>Bahwa dengan ilmu pengetahuan dan teknologi 1), manusia boleh meneliti dan mengelola alam beserta sumber dayanya, secara tepat guna sehingga alam memiliki kesempatan untuk memperbaharui dirinya dan berdaur ulang 2).&nbsp;</li>\\r\\n	<li>Bahwa oleh karena kuasa dosa, manusia cenderung untuk menguasai alam bagi kepentingan dan keuntungan pribadi, sehingga terjadi benturan kepentingan yang mengakibatkan dampak kerusakan alam. Hanya oleh pendamaian antara Allah dan manusia yang dilaksanakan dengan perantaraan Tuhan Yesus Kristus, maka manusia sebagai ciptaan baru 1) dapat melihat kembali pentingnya alam sebagai rumah dan sarana kehidupan bagi segala mahluk.&nbsp;</li>\\r\\n	<li>Bahwa karena pembaruan Roh Kudus 1), Gereja memiliki kewajiban moral 2) untuk bersama-sama pemerintah dan bangsa-bangsa berusaha menata ekologi dan mencegah pengrusakan alam.&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">V - NEGARA DAN BANGSA&nbsp;</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa Allah, sebagai Sumber Kuasa, memberikan kuasa kepada pemerintah bangsa-bangsa guna mendatang-kan keadilan dan kesejahteraan, memelihara ketertib-an serta mencegah dan meniadakan kekacauan dan kejahatan 1).Dengan demikian sebagai hamba Allah 2), setiap pemerintah wajib mempertanggung jawabkan kuasa tersebut kepada Allah.&nbsp;</li>\\r\\n	<li>Bahwa pemerintah dan negara menjalankan kuasa dan wewenang di bawah terang Tuhan Yesus Kristus, yang berfirman: &quot;berilah kepada kaisar apa yang kaisar punya dan kepada Allah apa yang Allah punya&quot; 1) Dengan demikian pemerintah dan negara mempunyai otonomi 2), tetapi otonomi ini tidak dapat mengatasi otonomi Gereja sebagai tubuh Kristus. Oleh karena kaisar berada di bawah Allah.&nbsp;</li>\\r\\n	<li>Bahwa kuasa yang diberikan kepada pemerintah itu dapat disalahgunakan karena dijadikan sebagai tujuan, hingga timbul kelaliman, kejahatan dan keresahan 1). Jika terjadi demikian maka sebagai Hakim dan Raja 2) Tuhan Yesus Kristus yang duduk di sebelah kanan Allah 3) akan menghakimi pemerintah pemerintah dan penguasa 4).&nbsp;</li>\\r\\n	<li>Bahwa Roh Kudus yang adalah Roh keberanian akan menolong orang percaya untuk lebih taat kepada Allah dari pada kepada manusia 1). Seperti yang telah disaksikan oleh para Rasul ; oleh karena itu Gereja terpanggil memper-dengarkan suara kenabian 2) terhadap masalah negara, bangsa, dan masyarakat.&nbsp;</li>\\r\\n	<li>Bahwa berdasarkan tuntunan Roh Kudus, warga jemaat yang adalah sekaligus warga negara wajib menaati undang-undang dan penjabarannya yang telah menjadi ketetapan bersama 1), namun ia wajib memberi saran-saran perbaikan secara kritis dan konstruktif lewat saluran saluran pengawasan demi keadilan dan kesejahteraan bangsa.2)&nbsp;</li>\\r\\n	<li>Bahwa berdasarkan tuntunan Roh Kudus, warga jemaat yang adalah sekaligus warga negara 1) perlu membina rasa kebersamaan sebagai satu bangsa 2) yaitu Indonesia, membangun saling pengertian dan toleransi dalam rangka menghayati kerukunan 3) nasional, dan meng-galang kemajuan bersama 4) bagi rakyat Indonesia.&nbsp;</li>\\r\\n	<li>Bahwa berdasarkan tuntunan Roh Kudus, warga jemaat yang adalah sekaligus warga negara, di dalam kehidupan bernegara, berbangsa, dan bermasyarakat, perlu mem-bangun rasa persatuan dan kesatuan 1) yang tidak merusak kebhinekaan dan kesetaraan 2) yang telah menjadi bagian dari masyarakat warga ( civil -society ), di mana hak - hak asasi manusia dijunjung tinggi 3).&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">VI - MASADEPAN&nbsp;</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa Allah dalam karya penyelamatan dan penciptaanNya menghantar orang percaya dari satu titik sejarah ke titik sejarah yang baru sehingga masa depan senantiasa tercakup dalam apa yang dibuatnya pada masa kini dan masa lalu 1).&nbsp;</li>\\r\\n	<li>Bahwa kedatangan Yesus Kristus sebagai Tuhan dan Juruselamat ke dalam dunia mem-berikan jaminan dan harapan yang pasti bagi orang yang percaya.&nbsp;</li>\\r\\n	<li>Bahwa Yesus Kristus adalah Tuhan 1) yang menjadi pusat ibadah 2) dan harapan 3) manusia dari zaman ke zaman dan Dia juga harapan mahluk lainnya,4) karena Dia-lah yang akan mendatangkan langit baru dan bumi baru 5) dimana derita dan maut tidak akan ada lagi tanpa Dia dunia tidak memiliki pengharapan 6)&nbsp;</li>\\r\\n	<li>Bahwa kebangkitan Yesus Kristus 1) maka orang percaya akan dibangkitkan dari kemati-an 2) dan dikumpulkan bersama-sama Dia 3) dalam keadaan yang Mulia 4). Oleh sebab itu maut bukanlah kata akhir dalam segala sesuatu melainkan hidup dalam kuasa kasih Yesus 5)&nbsp;</li>\\r\\n	<li>Bahwa Roh Kudus adalah roh pengharapan, akan menolong orang percaya untuk tetap berpaut pada kasih Kristus dan tidak ada suatu kuasa apapun yang dapat memisahkan orang percaya dari kasih Kristus 1). Apa yang dijanjikan kepada orang percaya untuk masa depan sudah mulai dialami pada masa kini 2), oleh karena sekarangpun orang percaya sudah hidup di dalam pengharapan 3)&nbsp;</li>\\r\\n	<li>Bahwa Roh Kudus yang adalah Roh masa depan menyadarkan orang percaya pada panggilan-Nya menjaga keutuhan dari bangsa dan negara 1) untuk mengisi kurun waktu menjelang masadepan yang pasti 2) itu dengan sikap, tindakan dan karya yang menghadirkan keadilan dan kebenaran berdasarkan kasih serta pemulihan 3) pemenuhan janji Allah akan langit baru dan bumi baru.&nbsp;</li>\\r\\n</ol>\\r\\n\\r\\n<h2 style=\\"font-style:italic;\\">VII - FIRMAN ALLAH&nbsp;</h2>\\r\\n\\r\\n<ol>\\r\\n	<li>Bahwa dengan perantaraan firman-Nya 1) Allah telah mencip-takan 2) langit dan bumi serta isinya. Firman Allah berkuasa 3) untuk mengubah dan membaharui. 4).&nbsp;</li>\\r\\n	<li>Bahwa Firman Allah telah menjadi manusia 1) di dalam dan melalui Yesus Kristus.&nbsp;</li>\\r\\n	<li>Bahwa dengan terang Roh Kudus, persekutuan orang percaya menetapkan tulisan-tulisan 1) yang memberitakan per-buatan Allah serta respon manusia terhadap tindakan Allah pada kurun waktu tertentu.&nbsp;</li>\\r\\n	<li>Bahwa dengan tuntunan Roh Kudus para penulis Alkitab menceritakan dan memberitakan perbuatan-perbuatan besar Allah dalam bentuk tulisan pada suatu kurun waktu tertentu dan juga respons manusia terhadap tindakan-tindakan Allah pada kurun waktu tertentu 3)</li>\\r\\n</ol>\\r\\n', 0, '', '', '#');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_sbu`
---
-
-DROP TABLE IF EXISTS `tbl_sbu`;
-CREATE TABLE IF NOT EXISTS `tbl_sbu` (
-`id` int(11) NOT NULL,
-  `kategori` enum('pagi','malam') NOT NULL,
-  `tanggal` date NOT NULL DEFAULT '0000-00-00',
-  `nats` varchar(255) NOT NULL,
-  `nyanyian` varchar(255) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `desk` text NOT NULL,
-  `create_by` int(11) NOT NULL,
-  `update_by` int(11) NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_sbu`
---
-
-INSERT INTO `tbl_sbu` (`id`, `kategori`, `tanggal`, `nats`, `nyanyian`, `judul`, `desk`, `create_by`, `update_by`, `last_update`) VALUES
-(1, 'pagi', '2015-06-18', 'Galatia 2:11-14', 'KJ.425 : 1 - Berdoa', 'SIAP KOMPROMI', '<p>Galatia 2:11-14<br />\r\nTetapi waktu Kefas datang ke Antiokhia, aku berterang-terang menentangnya, sebab ia salah (ay.11)<br />\r\n<br />\r\nSetiap daerah pasti memiliki budaya kerja, budaya pergaulan serta tradisi hidup masing-masing. Orang akan dianggap aneh bahkan akan ditegur jika berbuat sesuatu yang tidak lazim dan berbeda dengan budaya setempat yang ada. Orang baru yang memasuki budaya yang sama sekali baru awalnya pasti merasa aneh. Tetapi, lam bat laun ia akan berkompromi dengan lingkungannya. Masalahnya, bagaimana jika budaya itu tidak sesuai dengan Firman Allahy?<br />\r\n<br />\r\nHal ini dialami oleh Petrus. Dia adalah rasul yang pertama kali memberitakan keselamatan bagi orang non Yahudi. Apa yang dilakukan Petrus da|_am mendobrak tradisi pelayanan yang ada saat itu. Sebelumnya, Petrus pun sempat menjadi takut menjadi pribadi yang berbeda. la sempat takut dengan pandangan miring murid-murid Yakobus karena makan dengan orang-orang non Yahudi. Di dunia kerja, seharusnya kita bisa menjad sosok yang berani mendobrak budaya kerja yang kaku, kurang humanis, tidak produktif dan curang.<br />\r\n<br />\r\nMenjadi berbeda memang tidak mudah. Namun bukan berarti kita harus kompromi terus-menerus dengan budaya negatif yang ada di sekitar kita. lkutilah budaya setempat selama budaya itu tidak melanggar prinsip firman Tuhan, tapi beranikan diri untuk menjadi? sosok perubahan untuk mengubah budaya negatif.<br />\r\n<br />\r\nKJ. 425 V: 3<br />\r\nDoa : (Mampukan kaml, untuk kami tidak berkompromi dengan hal-hal yang tidak sesuai dengan ?rman-Mu, ya Tuhan)</p>\r\n', 3, 0, '2015-06-18 03:46:47'),
-(2, 'malam', '2015-06-18', 'Galatia 2:15-21', 'KJ.419:1 -Berdoa', 'BERIMAN SECARA DEWASA', '<p>Galatia 2:15-21<br />\r\nNamun aku hidup, tetapi bukan lagi aku sendiri yang hidup. melainkan Kristus yang hidup di dalam aku (ay.20a)<br />\r\n<br />\r\nIman itu dinamis. lman dapat mati dan gugur. Tapi juga bisa hidup, bertumbuh dan berkembang. Ketika Alkitab berbicara tentang iman, maka iman dikelompokan menjadi 2 bagian. Pertama, iman yang kekanak-kanakan dan kedua iman yang dewasa. lman yang-kekanak-kanakan adalah iman yang egosentris. Berpusat pada diri sendiri. Selalu berpamrih, bersyarat dan penuh dengan tuntutan. Sebaliknya, lman yang dewasa adalah iman mampu mencintai Tuhan apa adanya. Iman yang dewasa adalah iman yang dapat menerima bukan hanya yang baik saja dari Allah, tetapi juga yang buruk. lman yang dewasa bertolak dari hati yang mengasihi tanpa syarat, tidak berpamrih, dan tidak menuntut.<br />\r\n<br />\r\nlman yang dewasa adalah iman yang dapat mengatakan seperti Paulus, &quot;Hidupku bukan aku lagi, tetapi Kristus yang hidup di dalam aku.&quot; Separti itulah makna beriman, seperti Paulus yang tahu apa arti tujuan hidupnya. Mengenal dengan jelas siapa yang menjadi pusat dalam hidupnya. lman memungkinkan Paulus melihat dan memandang kehidupan dan sanggup menemukan keindahan kehidupan, pun di tengah kesuraman. Dengan iman Paulus dapat memaknai hidupnya, bahkan hidupnya pun menjadi lebih bermakna, karena Kristus juga hidup dalam dirinya.<br />\r\n<br />\r\nMarilah kita belajar untuk beriman secara dewasa. Kita bisa memulainya dari hal-hal yang sederhana dan sehari-hari. Betul, bahwa hal itu tidak mudah. Ada risikonya. Tetapi jangan sampai kenyataan itu membuat langkah kita surut.<br />\r\n<br />\r\nKJ. 419 : 2<br />\r\nDoa : (Berikanlah kami iman yang teguh, ya Tuhan. Mampukanlah kami senantiasa menghadirkan Kristus dalam hidup, kerja dan layan kami)</p>\r\n', 3, 0, '2015-06-18 03:50:14');
 
 -- --------------------------------------------------------
 
@@ -525,27 +443,15 @@ ALTER TABLE `tbl_jemaat`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_kegiatan`
---
-ALTER TABLE `tbl_kegiatan`
- ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_nikah`
 --
 ALTER TABLE `tbl_nikah`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `suami` (`suami`), ADD UNIQUE KEY `istri` (`istri`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_sbu`
---
-ALTER TABLE `tbl_sbu`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -580,25 +486,15 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 ALTER TABLE `tbl_jemaat`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=168;
 --
--- AUTO_INCREMENT for table `tbl_kegiatan`
---
-ALTER TABLE `tbl_kegiatan`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
---
 -- AUTO_INCREMENT for table `tbl_nikah`
 --
 ALTER TABLE `tbl_nikah`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
 MODIFY `id` int(9) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `tbl_sbu`
---
-ALTER TABLE `tbl_sbu`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_slider`
 --

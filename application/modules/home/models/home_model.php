@@ -9,6 +9,8 @@ Class Home_model extends CI_Model
         var $slider = 'tbl_slider';
         var $user   = 'tbl_users';
         var $pg     = 'tbl_page';
+        var $sbu    = 'tbl_sbu';
+        var $keg    = 'tbl_kegiatan';
     
 	function __constuct()
 	{
@@ -88,60 +90,111 @@ Class Home_model extends CI_Model
             return $query->result();
             
         }
+        /*
+         * SBU
+         */
         
-        
-        function get_first_sermon(){
+        function get_last_sbu(){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where_in('cat_id', array(12,13));
+            $this->db->order_by('id','desc');
             $this->db->limit(1);
             
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->sbu);
             
             return $query->row();
             
         }
         
-        function get_sermon_after($id){
+        function get_sbu_before($id){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
             $this->db->where('id !=', $id);
-            $this->db->where_in('cat_id', array(12,13));
             $this->db->limit(3);
             
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->sbu);
             
             return $query->result();
         }
         
-        function get_birthday($current_month){
+        
+        function get_detail_sbu($id){
             
-            $this->db->select('');
-            $this->db->like('dob', $current_month);
-            $this->db->order_by('dob','desc');
-            $this->db->limit(5);
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->sbu);
             
+            return $query->row();
+            
+        }
+        /*
+         *Birthday
+         */
+        function get_birthday(){ 
+
+            $this->db->select('');  
             $query = $this->db->get($this->jemaat);
             
             return $query->result();
             
         }
-        
-        function get_anniversary($current_month){
+        /**
+         * 
+         * ANNIVERSARY
+         * @return type
+         */
+        function get_anniversary(){
             
             $this->db->select('');
-            $this->db->like('tanggal', $current_month);
-            $this->db->order_by('id','desc');
-            $this->db->limit(5);
+            $current_month = date("m");
+            $query = $this->db->get('tbl_nikah');
             
+            $nexttwo = strtotime(date("m", strtotime('this month')) . " +2 month");
+            
+            
+            foreach ($query->result() as $row)
+            {
+                $tanggal = date("m", strtotime($row->tanggal));
+                if($tanggal == $current_month){
+                    
+                    $rowid[] = $row->id;
+                }
+                elseif($tanggal >= $current_month || $tanggal <= $nexttwo){
+                    $rowid[] = $row->id;
+                }
+               
+            }
+            
+            return $rowid;
+            
+            
+            
+        }
+        
+        function get_anniversary_couple(){
+            
+            $id = $this->get_anniversary();
+            $this->db->where_in('id',$id);
+            $this->db->order_by('tanggal','ASC');
+            $this->db->limit(5);
             $query = $this->db->get('tbl_nikah');
             
             return $query->result();
             
         }
         
+        function get_detail_anniv($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get('tbl_nikah');
+            
+            return $query->row();
+            
+        }
+        
+        
+        /*
+         * Weddubg Event
+         */
         function get_wedding(){
             
             $this->db->select('');
@@ -167,6 +220,25 @@ Class Home_model extends CI_Model
             return $query->result();
             
         }
+
+        function get_jemaat_bday($id){
+            
+            $this->db->where_in('id', $id);
+            $this->db->order_by('dob','ASC');
+            $query = $this->db->get($this->jemaat);
+            
+            return $query->result();
+            
+        }
+        
+        function get_jemaat_detail($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->jemaat);
+            
+            return $query->row();
+            
+        }
         
         function get_jemaat_sakit(){
             
@@ -181,32 +253,44 @@ Class Home_model extends CI_Model
             
         }
         
-        function get_event(){
+        /*
+         * 
+         * Kegiatan Minggu Ini
+         */
+        function get_all_kegiatan(){
             
             $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where('cat_id', 15);
-            $this->db->limit(6);
-            
-            $query = $this->db->get($this->berita);
+            $query = $this->db->get($this->keg);
             
             return $query->result();
             
         }
         
-        function get_others(){
+        function get_kegiatan_sepekan($id){
             
-            $this->db->select('');
-            $this->db->order_by('create_at','desc');
-            $this->db->where('cat_id', 16);
-            $this->db->limit(6);
+            $this->db->where_in('id',$id);
+            $this->db->order_by('id','asc');
+            $query = $this->db->get($this->keg);
             
-            $query = $this->db->get($this->berita);
             
             return $query->result();
             
         }
         
+        function get_detail_kegiatan($id){
+            
+            $this->db->where('id',$id);
+            $query = $this->db->get($this->keg);
+            
+            return $query->row();
+            
+        }
+        
+        /***
+         * 
+         * SLIDER
+         * 
+         */
         function get_slider(){
             
             $this->db->order_by('created_at','desc');
